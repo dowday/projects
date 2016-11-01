@@ -1,0 +1,42 @@
+
+*******************seance de 21/10/2015:*************
+
+EXo: 
+
+Faire un exercice des classe et sous classe etc...
+avec le fichier 10_21_2015_Courses.textDocuments
+
+Cours :
+
+Infobox extraction c;est la plus difficile
+
+> pour fair edu RDF --> on enleve les egale on met des "", chaque foix qui a des texte alors ca sera literau
+et les = se transfrom en des lien ( S8/13)
+
+> new file of diapo , title : SPARQL - Querying the web of data ( Introduction to SPARQL)
+
+S3: on cherche tout les noeud qui existe de type volcano, le graph dessiner c'est un simpel sous graph
+on decrit simplement un sous graph dans sparql
+
+S4: supposon que c'est un graph sparql , resultat de la requete, les deux noeud.
+
+S5: le syntax textuel
+
+?v rdf:type umbel-sc:volcano . < c'est le syntaxe  (le point obligatoire sauf que apres le denier ) but at the end of the prefix no . 
+
+we go then to http://dbpedia.org/sparql and here there are query text.
+
+S12: we write sparql as the same we right rdf, just we add ? and $ more then rdf
+
+S14: its the base de donne
+	the query ( we want just the volcam so we say Select ?name WHERE {
+							?v rdf...
+
+S15: if we want all volcano called beerenberg.. in the query we get nothing because we didnt precise the language 
+							so we have to put "beernberg"@en and not "beernberg" because the latter willl not work
+
+S25: V et 
+
+S26: to extract the string part: STR(A) extrait la parti string sans la parti langue
+
+

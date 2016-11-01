@@ -1,0 +1,76 @@
+ <xsl:for-each select="city:cityObjectMember/bldg:Building/bldg:boundedBy/bldg:WallSurface/bldg:lod3MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon/gml:exterior/gml:LinearRing">
+			<shape>
+				<IndexedFaceSet>
+					<xsl:variable name="vpoint" select="gml:posList"/>
+					<xsl:variable name="nbelt" select="string-length(normalize-space(gml:posList))
+					- string-length(translate(normalize-space(gml:posList),' ','')) +1"/>
+					<xsl:variable name="sqnbelt" select="$nbelt div 3 - 1"/>
+
+                <xsl:attribute name = "solid" ><xsl:value-of select = "false()"/></xsl:attribute>
+                <xsl:attribute name="coordindex">
+                    <xsl:value-of select="0 to ($sqnbelt)" separator=" "/>
+                </xsl:attribute>
+
+                    <Coordinate>
+                        <xsl:attribute name= "point" ><xsl:value-of select = "$vpoint" /></xsl:attribute>
+                    </Coordinate>
+
+				</IndexedFaceSet>
+				<Appearance>
+						 <Material diffuseColor="0 0 1"></Material>
+				</Appearance>
+			</shape>
+		</xsl:for-each>
+
+        <xsl:for-each select="city:cityObjectMember/bldg:Building/bldg:boundedBy/bldg:WallSurface/bldg:lod3MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon/gml:exterior/gml:LinearRing">
+			<shape>
+				<IndexedFaceSet>
+					<xsl:variable name="vpoint" select="gml:posList"/>
+					<xsl:variable name="nbelt" select="string-length(normalize-space(gml:posList))
+					- string-length(translate(normalize-space(gml:posList),' ','')) +1"/>
+					<xsl:variable name="sqnbelt" select="$nbelt div 3 - 1"/>
+
+                <xsl:attribute name = "solid" ><xsl:value-of select = "false()"/></xsl:attribute>
+                <xsl:attribute name="coordindex">
+                    <xsl:value-of select="0 to ($sqnbelt)" separator=" "/>
+                </xsl:attribute>
+
+                    <Coordinate>
+                        <xsl:attribute name= "point" ><xsl:value-of select = "$vpoint" /></xsl:attribute>
+                    </Coordinate>
+
+				</IndexedFaceSet>
+				<Appearance>
+						 <Material diffuseColor="0 0 1"></Material>
+				</Appearance>
+			</shape>
+		</xsl:for-each>
+
+
+
+		//////
+		another building bounded by ]
+
+		        <xsl:for-each select="city:cityObjectMember/bldg:Building/bldg:boundedBy/bldg:WallSurface/bldg:lod3MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon/gml:exterior/gml:LinearRing">
+			<shape>
+				<IndexedFaceSet>
+					<xsl:variable name="vpoint" select="gml:posList"/>
+					<xsl:variable name="nbelt" select="string-length(normalize-space(gml:posList))
+					- string-length(translate(normalize-space(gml:posList),' ','')) +1"/>
+					<xsl:variable name="sqnbelt" select="$nbelt div 3 - 1"/>
+
+                <xsl:attribute name = "solid" ><xsl:value-of select = "false()"/></xsl:attribute>
+                <xsl:attribute name="coordindex">
+                    <xsl:value-of select="0 to ($sqnbelt)" separator=" "/>
+                </xsl:attribute>
+
+                    <Coordinate>
+                        <xsl:attribute name= "point" ><xsl:value-of select = "$vpoint" /></xsl:attribute>
+                    </Coordinate>
+
+				</IndexedFaceSet>
+				<Appearance>
+						 <Material diffuseColor="0 0 1"></Material>
+				</Appearance>
+			</shape>
+		</xsl:for-each>

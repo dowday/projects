@@ -1,0 +1,134 @@
+The XML file is Stadt-Ettenheim-LoD3_transl.gml in the TP1 subfolder of the Documents folder (on Chamilo
+platform). This dataset contains most of the different CityGML city objects 
+
+TP 1
+Objective of the work
+● Produce an X3DOM visualization of XML data using an XSLT transform sheet
+
+Submission of the work
+Deadline: October 26, 2015
+For this date please submit the following documents
+● the XSLT transformation sheet
+● the X3DOM files produced
+● a one-page (or more) report explaining your work
+And prepare an oral presentation of your work (duration: five minutes) that will take place on October 26, 2015.
+You are encouraged to form groups of two persons.
+Data
+The XML file is Stadt-Ettenheim-LoD3_transl.gml in the TP1 subfolder of the Documents folder (on Chamilo
+platform). This dataset contains most of the different CityGML city objects (Building, ReliefFeature, WaterBody,
+Road, CityFurniture, PlantCover, GenericCityObject).
+Additional indications
+You are intended to visualize only a subset of the different city objects using a different color for each
+kind of city object.
+For producing the X3DOM file use saxon from a window “Invite de commandes”:
+java –jar saxon9he.jar –xsl:my_xslt_file Stadt-Ettenheim-LoD3_transl.gml > my_X3DOM_file
+where my_xslt_file and my_X3DOM_file must be changed by your own filenames.
+
+Le but de ce TP est de ne pas recontruire de nouveau c'est que juste on construie 
+
+********** Building ( RoofSurface, WallSurface, GroundSurface, Opening door, Opening Windows)
+We see that building is bounded by a roof surface and a wall surface  and ground surface 
+D19F88 color  of wall   8 wall or 6 and 1 roof also  or 4 
+D24B4B color of roof 	1 roof 
+I do also opening door and closing door
+
+		
+<xsl:for-each select="city:cityObjectMember/bldg:Building/gml:boundedBy/bldg:WallSurface/bldg:lod3MultiSurface/bldg:lod3MultiSurface/gml:surfaceMember/gml:Polygon/gml:exterior/gml:LinearRing">
+<xsl:for-each select="city:cityObjectMember/bldg:Building/gml:boundedBy/bldg:RoofSurface/bldg:lod3MultiSurface/bldg:lod3MultiSurface/gml:surfaceMember/gml:Polygon/gml:exterior/gml:LinearRing">
+  <!-- Wall surface bounded by the opening  Window-->
+            <xsl:for-each select="city:cityObjectMember/bldg:Building/gml:boundedBy/bldg:WallSurface/bldg:opening/bldg:Window/bldg:lod3MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon/gml:exterior/gml:LinearRing">
+			
+***********GenericCityObject i can see what is around the village i will put it on (bonni color FCD769)
+
+---------------------------------------------------------------------------------------------------------------
+ReliefFeature
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+WaterBody
+
+
+
+ 
+---------------------------------------------------------------------------------------------------------------
+Road
+
+
+
+---------------------------------------------------------------------------------------------------------------
+CityFurniture : this contain nafourat el madineh 
+
+
+
+---------------------------------------------------------------------------------------------------------------
+PlantCover
+
+---------------------------------------------------------------------------------------------------------------
+GenericCityObject
+<xsl:for-each select="city:cityObjectMember/gen:GenericCityObject/gen:lod3Geometry/gml:MultiSurface/gml:surfaceMember/gml:Polygon/gml:exterior/gml:LinearRing">
+---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Building
+
+ReliefFeature
+
+
+
+WaterBody
+ 
+Road
+
+CityFurniture
+		
+		
+PlantCover
+
+GenericCityObject
+ 
+
+
+cd workspacetws/tp_tws
+
+java –jar saxon9he.jar –xsl:my_xsl.xsl Stadt-Ettenheim-LoD3_transl.gml > x3dom.html
+
+city:CityModel/cityObjectMember/trans:Road/trans:lod3MultiSurface/gml:MultiSurface/gml:surfaceMember/gml:Polygon/gml:exterior/gml:LinearRing
+
+
+
+<xsl:template match="text()">
+    <xsl:for-each select="city:CityModel">
+    <tr>
+      <td><xsl:value-of select="name"/></td>
+      <!-- <td><xsl:value-of select="artist"/></td> -->
+    </tr>
+    </xsl:for-each>
+	
+	<bldg:Building
+	<gml:boundedBy>		</bldg:boundedBy>
+	
+	
+	
