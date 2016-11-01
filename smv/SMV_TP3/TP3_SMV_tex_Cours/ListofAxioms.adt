@@ -1,0 +1,45 @@
+\begin{filecontents*}
+
+Axioms
+//not
+	false = not(true);
+ 	true = not(false);
+   //and
+ 	x and true = x;
+ 	false = x and false;
+   //implies
+ 	x implies (y and $z) = (y and $z) or not(x);
+ 	false implies x = true;
+ 	x = true implies (x and true);
+    Variables   x : bool;   y : bool;   z : bool;
+
+
+   //+
+ 	x + 0 = x;
+ 	x + s(y) = s(x + y);
+
+
+   //-
+	x - 0 = x;
+	s(x) - s(y) = x - y;
+
+
+   //ge: > or =
+	x ge 0 = true;
+	0 ge s(x) = false;
+	s(x) ge s(y) = x ge y;
+
+
+   //times
+	x times 0 = 0;
+	x times s(y) = x + (x times y);
+
+
+   //divide
+   //Please excuse the heresy of defining x/0 = 0
+	if ge(x, y) = true then x ÷ y = s((x - y) ÷ y);
+	if ge(x, y) = false then x ÷ y = 0;
+Variables	x : nat; 	y : nat;
+\end{filecontents*}
+
+

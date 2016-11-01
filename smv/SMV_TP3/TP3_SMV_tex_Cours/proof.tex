@@ -1,0 +1,21 @@
+\begin{filecontents*}{proof.adt}
+s($x) divide s($x) = s(zero)
+$x ge $x = true
+zero ge zero = true
+
+1 – Axiome ligne 25 de Nat.adt
+$x ge zero = true
+2 – Substitution [zero/$x] dans 1
+zero ge zero = true
+
+
+if s($x) ge s($x) = true then s($x) divide s($x) = s((s($x) minus s($x)) divide s($x)) "A"
+s($x) divide s($x) = s((s($(x) minus s($x)) divide s($x)) "B"
+if s($x) ge s($x) = true then s($x) divide s($x) = ( (s($x) minus s($x)) divide s($x) ) ~ s( zero divide s($x) ) "C"
+s( zero divide s($x) ) "D"
+if ge(zero,s($x)) = false then zero divide s($x) = zero; "F"
+zero divide s($x) = zero; "G"
+
+s(zero divide s($x) )= s( zero ) "H"
+
+\end{filecontents*}

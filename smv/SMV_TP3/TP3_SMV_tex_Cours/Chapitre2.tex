@@ -1,0 +1,123 @@
+\chapter{La M\'ethode Tabou}
+
+\section{intro}
+(Tabu secret)
+
+Propos\'e par glover en 1986 
+Une m\'ethode bien adopter au probl\'eme d'\underline{affectation quandution}(QAP)
+L'espace de recherche est donc l'espace des permutation de  $n$ objets.
+Le contexte tabu ob\'eit aux  principe de base on explore it\'erativement $S$
+\begin{center}
+$X1 --U--> X1 \in V(x_0) ---U-->...$
+\end{center}
+o\`u U est sp\'ecifique \'a la recherche  tabu
+
+U va choisir dans $V(x_{n})$le meilleur Xmax
+o\`u meilleur signifi:
+\begin{itemize}
+\item Xmax n'est pas \underline{tabus} donc que Xmax est une solution permise.
+\item de fitness meilleur dans $V(x_b)+{X_n}$ donc le meilleur voisin n'est pas interdit.
+\item s'il ya plusieurs voisin de m\^eme fitness optimale dans $V(_{x_n})$ on en choisit un au hasard.
+\end{itemize}
+La m\'ethode n\'ecessite d'explor\'e tout le voisinage
+
+La s\'ecificit\'e de la m\'ethode tabu est l'existence d'une liste de permets interdits (tabus) dont le but est d'emp\^eches la recherche de repasser par des solutions d\'ej\'a vue.
+
+Le contenue de la liste tabou n'est pas permanent, mais en constante \'evolution: on y ajoute et enl\`ve constament de l'information.
+
+
+$(\textcolor{red}{check- diagram - 11})$ 
+
+
+$(\textcolor{red}{check- example 1/4 , in course pdf - 11})$ 
+
+\section{Convergence de la m\'ethode}
+Par convergence, on veut donc la propri\'et\'e de trouver l'optimum global
+La r\'eponse est oui si:
+\begin{itemize}
+\item L'espace $S$ est fini, le voisinage est sym\'etrique (si $x in V(y)$ alors $y \in V(x)$ et que tout point de $S$ s'atteind de tout autre  par un nb fini de mouvements.
+\item La liste tabou m\'emorise tous les points visit\'es tout en permettant de repassser par le plus ancien point tabou s'il n'y a plus d'option
+
+Alors l'espace est visibl\'e de facon exhoustive et qu'on trouvera l'optimum.
+Mais ce r\'esultat n'est {gu\'`re} utile car il pr\'edit un \underline{temps exponentiel} dans la taille de $S$ pour tout visiter.
+
+\subsection{La liste Tabou}
+Que mettre dans la liste tabout ?
+il y a plusieurs strat\'egies:
+\begin{itemize}
+\item les point d\'ej\`a visit\'es 
+\item Des attributs des points visit\'es 
+\item l'inverse des mouvement utilis\'es.
+
+\end{itemize}
+Pour garder les point visit\'es, il faut sp\'ecifier la taille m\'emoire M et avoir un buffer circulaires: 
+
+$(\textcolor{red}{check- dessin - 12})$ 
+
+On peut aussi garder des attribut des solution 
+Soit $T$ un tableua de taille $M$ et $h(x)$ un propri\'et'e (un attribut) de x que l'on supoose entier.
+On peut calculer $h(x)$ mod $M$ et dire que cette valeur est interdite \underline{pendant t it\'erations } t s'appelle la \underline{dur\'ee de l'interdiction}
+Si un tel $x$ est visit\'e \'a l'interdiction k on placera en 
+\begin{center}
+$T[h(x) \mod M]= K+t$
+
+\end{center}
+Un point $X'$ candidat comme successuer pour l'exploration sera i \'a l'it\'eration k' si 
+\begin{center}
+$K' < T[h(x) \mod M]$
+\end{center}
+Le principe de la dur\'ee de l'interdicction est beaucoup utilis\'e notament si la liste tabou contient l'invers de mouvement effectu\'e c'est la solution la plus courante \\
+$check tab 13$\\
+C'est le movement inverse qui est tabou on veut eviter de reunir la ou on visiter 
+
+$check tab 14$
+La m\'emoire \'a ling terme fait des statistiques sur les fr\'equence des mouvement choisis et peut prendre le contr\^ole de la m\'emoire \'a cout terme (dur\'ee d'interdiction) et forcer  des mouvement bcp  trop plus employ\'es (utili\'es)
+
+\end{itemize}
+
+\subsection{Liste Tabou}
+Liste tabou: point, mouvement ou attribut interdit.\\ Un ingrédient important est la durée de l'interdiction.\\ \\
+On se souvient que les métaheuristiques utilisent deux principes:\\
+- la diversification (exploration)\\
+- et l'intensification (exploitation). \\
+
+Si la liste tabou est courte, on choisit aussi les durées d'interdictions courtes, on favorise l'intensification car les points de bonnes fitness dans le voisinage sont rarement tabous. \\
+Dans le cas contraire, on va explorer des régions de bonnes fitness et favoriser la diversification.\\
+
+\paragraph{\underline{Notation d'aspiration :}} La méthode tabou vient aussi avec un mécanisme dit d'aspiration:\\
+Une solution tabou peut être choisie si elle est meilleure que toutes les solutions rencontrées jusqu'à présent (si on passe proche de qqch de très bien, on vas y aller).
+\textcolor{red}{La m\'ethode tabou vient aussi avec un m\'ecanisme dit d'\underline{aspiration}
+Un solution tabou peut \^etre choisie si elle est meilleure que toutes les solutions rencontr\'ee jusqu'\'a pr\'esent.} -> this is my copying from professor 
+\section{Probl\`eme d'affectation quadratique}
+C'est une famille de probl\'eme d'optimisation combinatoire tr\'es fr\'equente dans la pratique \\
+\begin{itemize}
+\item On se donne n objets et n emplacements pour ces objets.
+\item On se donne des flux $f_{ij}$ entre chaque paire i et j d'objets.
+\item On se donne une distance $d_{rs}$ entre chaque emplacement r et s
+\end{itemize}
+
+\boldmath{schema} \textcolor{red}{voir photo pris de anh}
+Le voyageur de commerce est aussi un probl\`me QAP
+
+l'espace de recherche S, l'ensemble des permutations de n objets \\
+$p=(i_1,i_2,i_3...i_n))$ $i_k$ num\'ero de l'objet positionner en k\\
+ou espace $p'=(p_1,p_2,..,p_n)$ avec $p_{r_k}$ la posistion de l'objet $k$\\
+La fitness du probl\'eme, auon veut minimiser est :
+\begin{center}
+%$F=\sum_(ij)F_i_j d_{r_i}_{r_i} = \sum_{r,s}$  
+$F=\sum_{ij} F_{ij} d_{{r_i}_{r_i}} $
+somme sur toutes les paires d'objet \\
+$d_{{{r}_{i}}{{r}_{j}}}$
+
+\textcolor{red}{copier ce que j'ai rater dans le debut de la seance voir slack}
+\end{center}
+
+La liste tabou est une matrice $T$ de taille $nxn$ tel que l'\'el\'ement $T_ir$ est le dernier mouvement(it\'eration) o\`u l\'objet i a quitt\'e l'emplacement r, additionn\'e d'une dur\'ee d'interdiction t al\'eatoire.
+A chaque it\'eration il y a 2objets qui bougent ce qui affecte deux \'el\'ements de T
+
+Le mouvement $(r,s)$ sera tabou \`a l'it\'eration k si \'a la fois  $NOTE Corrige les faute commente $
+
+% $T_{i_{s}_r}$ et  $T_{i_{r}_s}$ 
+contenant une valeur sup\'erieur \'a $k$
+En d'autres termes on n'a pas le droit de replacer $x$ objets donn\'es \'a des emplacement qu'ils ont d\'ej\'a occup\'e dans le pass\'e  (\'a une distance t de l'it\'eration courante)
+\newpage

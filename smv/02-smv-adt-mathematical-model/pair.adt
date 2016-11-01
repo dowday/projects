@@ -1,0 +1,18 @@
+import "boolean.adt"
+import "nat.adt"
+
+Adt pair
+	Sorts pair;
+	Generators
+	  p : nat, nat -> pair;
+	Operations
+	  left : pair -> nat;
+	  right : pair -> nat;
+	  sum : pair -> nat;
+	Axioms
+	  left(p($x,$y)) = $x;
+	  right(p($x,$y)) = $y;
+	  sum(p($x,$y)) = $x plus $y;
+	Variables
+	  x : nat;
+	  y : nat;

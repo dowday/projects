@@ -1,0 +1,138 @@
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+} 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{yellow},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\lstdefinestyle{MyListStyle} {
+    numbers=left,
+    language=Java,
+    backgroundcolor={\color{yellow}},
+    breaklines=true
+    }
+\geometry{total={210mm,297mm},
+left=25mm,right=25mm,%
+bindingoffset=0mm, top=20mm,bottom=20mm}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true,    % Colours links instead of ugly boxes
+  urlcolor     = blue,    % Colour for external hyperlinks
+  linkcolor    = blue,    % Colour of internal links
+  citecolor    = red      % Colour of citations
+}
+\definecolor{colour3}{rgb}{0.0,0.0,0.6} %file .adt
+\definecolor{colour1}{rgb}{0.8,1.0,0.8} %to the back ground 
+\definecolor{colour0}{rgb}{0.4,0.0,0.4}
+\definecolor{colour2}{rgb}{0.8,0.8,0.8} %to the back ground
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{highlight}{RGB}{255,251,204} % Code highlight color
+\definecolor{blue}{rgb}{0.0,0.2,1.0}
+\lstdefinestyle{MyListStyle} {
+    numbers=left,
+    language=Java,
+    backgroundcolor={\color{white}},
+    breaklines=true
+    }
+
+\lstdefinestyle{MyListStyle1} {
+    numbers=left,
+    language=Java,
+    backgroundcolor={\color{colour2}},
+    breaklines=true
+	keywordstyle=\color{green}
+	}
+
+
+\lstdefinestyle{MyListStyle2} {
+    numbers=left,
+    language=Java,
+    backgroundcolor={\color{colour0}},
+    breaklines=true
+    keywordstyle=\color{green}
+    }
+
+\lstdefinestyle{Style1}{ % Define a style for your code snippet, multiple definitions can be made if, for example, you wish to insert multiple code snippets using different programming languages into one document
+language=matlab, % Detects keywords, comments, strings, functions, etc for the language specified
+backgroundcolor=\color{backcolour}, % Set the background color for the snippet - useful for highlighting
+basicstyle=\footnotesize\ttfamily, % The default font size and style of the code
+breakatwhitespace=false, % If true, only allows line breaks at white space
+breaklines=true, % Automatic line breaking (prevents code from protruding outside the box)
+captionpos=b, % Sets the caption position: b for bottom; t for top
+commentstyle=\usefont{T1}{pcr}{m}{sl}\color{dkgreen}, % Style of comments within the code - dark green courier font
+deletekeywords={}, % If you want to delete any keywords from the current language separate them by commas
+%escapeinside={\%}, % This allows you to escape to LaTeX using the character in the bracket
+firstnumber=1, % Line numbers begin at line 1
+frame=single, % Frame around the code box, value can be: none, leftline, topline, bottomline, lines, single, shadowbox
+frameround=tttt, % Rounds the corners of the frame for the top left, top right, bottom left and bottom right positions
+keywordstyle=\color{blue}\bf, % Functions are bold and blue
+morekeywords={}, % Add any functions no included by default here separated by commas
+numbers=left, % Location of line numbers, can take the values of: none, left, right
+numbersep=10pt, % Distance of line numbers from the code box
+numberstyle=\tiny\color{codegray}, % Style used for line numbers
+rulecolor=\color{black}, % Frame border color
+showstringspaces=false, % Don't put marks in string spaces
+showtabs=false, % Display tabs in the code as lines
+stepnumber=5, % The step distance between line numbers, i.e. how often will lines be numbered
+stringstyle=\color{codepurple}, % Strings are purple
+tabsize=2, % Number of spaces per tab in the code
+}
+
+% Create a command to cleanly insert a snippet with the style above anywhere in the document
+\newcommand{\insertcode}[2]{\begin{itemize}\item[]\lstinputlisting[caption=#2,label=#1,style=Style1]{#1}\end{itemize}} % The first argument is the script location/filename and the second is a caption for the listing
+
+%----------------------------------------------------------------------------------------
+   
+\newtheorem*{remark}{Remark}
+\fancyhf{}
+\rhead{Analyse et Traitement de l’Information}
+\lhead{Oday Darwich}
+%\rfoot{Pags\ \thepage \ of \ \pageref{LastPage}}
+\rfoot{Page\ \thepage} 
+\newcommand{\eg}[0]{\mbox{e.g. }\xspace}
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+% % Exercice question answer envirement 
+\renewcommand{\QuestionNB}{Question~\arabic{Question}.\ }
+\setlength{\QuestionIndent}{7em}

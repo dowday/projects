@@ -1,0 +1,42 @@
+This TP will cover two aspect : \\
+\begin{enumerate}
+\item[$\bullet$]
+\end{enumerate}
+
+Ti lunch stratagem we open the command prompt and we put the directory of .../bin \\ then we put the command \\
+\centerline{$stratagem\ transition-system\ filename.ts$}
+or\\
+\centerline{$stratagem.bat\ transition-system\ filename.ts$}
+\\31/90 slide\\
+Proofs in algebraic specifications\\
+Aim : Proof of specification properties in a systematic way. How to
+proceed from the axioms :\\
+Use equational rules (reflexivity,symmetry, transitivity)\\
+Use functional composition rules\\
+Use variable substitution rules\\
+) we obtain equational theorems\\
+
+\section{Exercice : Proof}
+Make a detailed and precise proof of the following theorem by using the ADTs
+in listings 1 and 2.
+\insertcode{"Scripts/proof.adt"}{Theorem to proof}
+\begin{enumerate}
+\item Fist let's proof by induction that   x ge
+\end{enumerate}
+
+\lstinputlisting[style=Style1, linerange={1-1}]{proof.adt}
+%%\begin{ExerciseList}
+%%\LARGE\Exercise{\textbf{Proof}}
+%%\Question{Proof the theorem below}
+%%\insertcode{"Scripts/proof.adt"}{Theorem to proof}
+%%
+%%\end{ExerciseList}
+
+\
+%%\include{Chapitre1}
+%%\include{Chapitre2}
+%%\include{Chapitre3}
+%%\include{Chapitre4}
+%%\include{Chapitre5}
+%%\include{Chapitre6} % The first argument
+\end{document}

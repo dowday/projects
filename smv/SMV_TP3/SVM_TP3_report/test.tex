@@ -1,0 +1,108 @@
+\documentclass{article}
+\include{packages}
+\include{pagesconfigurations}
+\include{codegraph.adt}
+\include{codeboolean.adt}
+
+\begin{document}
+\include{title}
+\section{Introduction}
+
+\subsection{Definition of Abstract Data Type (ADT):}
+
+\paragraph{Abstract Data Type}is a mathematical model for data, known as \textbf{ADT}, where a data type is defined by its behavior (semantics).\\
+To understand ADT, lets take two steps back, If we take off \textbf{Abstract} and Data from ADT, now we have type, and a \textbf{type} would be \textbf{defined} as a \textbf{collection} of \textbf{type values}, e.g., integer type, 0, 1, 2 etc.\\
+If we add the \textbf{Data} back in we would \textbf{define data type} as  a \textbf{type} and the \textbf{set of operations} that will \textbf{manipulate the type}, e.g., addition, subtraction, and multiplication are operations that can be performed on the integer data type.\\
+So, we can define an \textbf{abstract data type} (\textbf{ADT}) as a \textbf{data type}, that \textbf{is a type and the set of operations\label{operationsapp} \ref{operations} that will manipulate the type}, e.g., for the integer data type, the operations might be delete an integer, add an integer, print an integer, and check to see if a certain integer exists.\paragraph{In this TP,}we will create ADT to define oriented graphs, i.e., directed graph is an ordered pair G = (V, A) with
+\begin{itemize}
+\item[$\bullet$] V a set whose elements are called vertices, nodes\label{node}, or points;
+\item[$\bullet$] A a set of ordered pairs of vertices, called arrows, directed edges (sometimes simply edges with the corresponding set named E instead of A), directed arcs, or directed lines.
+\end{itemize} To do this, we will use an eclipse plugin called \textbf{ALPiNA}, i.e., \textbf{Al}gebraic \textbf{P}etri \textbf{N}ets \textbf{A}nalyzer and is a model checker for Algebraic Petri Nets. And with the rewriting tool in ALPiNA we will check with our solution that all the theorems defined in \textcolor{colour3}{graph.adt} are validated.
+So, we will construct \textcolor{colour3}{graph.adt} file by replacing the *** with the adequate expressions.
+
+\subsection{File structure :}
+In this section i am describing each part enumerated in \textcolor{blue}{blue from 1 two 5 on left side}, and each part i explain the code line by line (you see on the left the gray background the number of the code line on the \textbf{graph.adt} file).\\
+And in the TP after completing my axioms i did tests to verify it (you can find code lines and tests on the annex).
+\begin{enumerate}[label=\color{blue}\theenumi]
+\item \textbf{The head} of the  \textbf{graph.adt} \textit{.adt} file contains all file that we may use to construct our axioms.\\
+In this TP we need to import {\textcolor{colour3}{boolean.adt}}.\label{importboolean}
+\noindent
+\lstinputlisting[style=MyListStyle1, linerange={2-2},firstnumber=2,]{codegraph.adt} in which we have added  the axioms to define the behavior of the operators \textbf{not} and \textbf{and} as we have seen in the exercices. I also added the axioms of the operator \textbf{or} which i want to use it after in axioms like $canReach(,,)$ and $existsCycle(,)$.
+\lstinputlisting[style=MyListStyle1, linerange={19-21},firstnumber=18,]{codeboolean.adt}
+\bigskip
+\noindent And also in the \textbf{Head} we write the name of the \textit {.adt} file that we are workin on.
+\lstinputlisting[style=MyListStyle1, linerange={4-4},firstnumber=4,]{codegraph.adt}
+%\bigskip
+
+\item \textcolor{colour0}{Sorts} \label{sort}: an ADT is a set of values, hereafter
+\newpage
+\item \textcolor{colour0}{Generators}\label{generator}: Define Functions and The base cases.\\
+As we see on the theorems in the bottom of the file graph.adt we have 4 nodes, so we complete defining the 4 nodes A, B, C, D by replacing the *** as you see below.
+\lstinputlisting[style=MyListStyle1, linerange={10-15},firstnumber=10,]{codegraph.adt}
+% %<
+
+% %>edge methode:
+\bigskip\noindent
+\lstinputlisting[style=MyListStyle1, linerange={18-18},firstnumber=18,]{codegraph.adt}
+The method edge is to create an edge from the pairs of nodes.\\
+% %>empty
+\bigskip\noindent
+\lstinputlisting[style=MyListStyle1, linerange={20-20},firstnumber=20,]{codegraph.adt}
+The method edge is to create an edge from the pairs of nodes.\\
+% %> noedge
+\bigskip\noindent
+\lstinputlisting[style=MyListStyle1, linerange={21-21},firstnumber=21,]{codegraph.adt}
+\label{noedge}I want to use this on the axiom getEdge \ref{axiomgetedge}\\
+
+% %> cons
+\bigskip\noindent
+\lstinputlisting[style=MyListStyle1, linerange={22-22},firstnumber=22,]{codegraph.adt}
+We want to define inductivly a graph so the result of cons should be graph.\\
+and as we on the L 49 \ref{cons} cons take $\$e1$ so edge as first parameter and graph $\$g$ as second parameter.
+
+
+
+\bigskip\noindent
+\include{operations}
+\bigskip\noindent
+
+
+
+\include{axioms}
+
+
+\item \textcolor{colour0}{Theorems}\label{theorems}: A theorem is a statement that can be demonstrated to be true by accepted mathematical operations and arguments.
+
+\item \textcolor{colour0}{Variables}\label{variables}: It's a generic element of sorts.
+\end{enumerate}
+\subsection{Graph ADT Construction}
+\noindent
+% % Showing line range x,y ,z..
+\lstinputlisting[style=MyListStyle1, linerange={9-22},firstnumber=0,]{graph.adt}
+    
+\bigskip\noindent
+\lstinputlisting[style=MyListStyle1, linerange={8-8},firstnumber=9,]{graph.adt}
+
+\bigskip\noindent
+\lstinputlisting[style=MyListStyle1, linerange={8-8},firstnumber=9,]{graph.adt}
+
+
+
+
+%%Showing lines 1,3,7,12 (note that Line 7 is blank) with starred version between lines 1 and 3 to supress the space and the space before line 12 set to 50\% of the \verb|\baselineskip|:
+
+%%\NewDocumentCommand{\ShowListingForLineNumber}{s O{1.0} m m}{
+%%    \IfBooleanTF{#1}{\vspace{-#2\baselineskip}}{}
+%%    \lstinputlisting[
+%%            style=MyListStyle1,
+%%            linerange={#3-#3},
+%%            firstnumber=#3,
+%%            ]{#4}
+%%}%
+%%
+%%\ShowListingForLineNumber{3}{graph.adt}% supress space before
+%%\ShowListingForLineNumber{7}{graph.adt}% supress 50% of the space before
+%%\ShowListingForLineNumber{12}{graph.adt}
+%%\lstinputlisting[style=MyListStyle1, linerange={42-42},firstnumber=42]{graph.adt}
+
+\end{document}

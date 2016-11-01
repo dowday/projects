@@ -1,0 +1,27 @@
+\\
+target(edge(A,B))
+
+\\
+existsEdge(cons(edge(B,C), cons(edge(D,C), cons(edge(C,A), empty))),C)
+
+\\Test to is Terminal
+isTerminal(cons(edge(B,C),C))
+isTerminal(cons(edge(B,C), cons(edge(D,C), cons(edge(C,A), empty))),A)
+isTerminal(cons(edge(A,C), cons(edge(A,B), cons(edge(B,C), cons(edge(D,C), cons(edge(C,A), empty))))),A)
+isTerminal(cons(edge(A,B),empty),B) > if ture
+isTerminal(cons(edge(A,B),empty),A) > if false
+isTerminal(empty,A)
+
+\\ test de remove : 
+remove(cons(edge(D,C), cons(edge(C,A), empty)),edge(C,A))
+remove(cons(edge(D,C), cons(edge(C,A), empty)),edge(C,A))
+					cons(edge(D, C), empty)
+					
+//test of Get edge
+
+getEdge(cons(edge(D,C), cons(edge(C,A), empty)),D)  --> for the first case|| the edge of D
+getEdge(cons(edge(D,C), cons(edge(C,A), empty)),D)  --> the second case || there are no edge D
+getEdge(cons(edge(D,C), cons(edge(C,A), empty)),C)  --> if the a node is not the first go recusivly
+
+\\ existsCycle
+existsCycle(D,cons(edge(D,C), cons(edge(C,A), empty))

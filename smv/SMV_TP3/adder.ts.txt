@@ -1,0 +1,38 @@
+TransitionSystem
+
+ADT adt_added
+
+Signature
+
+Sorts
+    nat
+
+Generators
+    // Base of nat
+    zero: nat
+    // increment of nat
+    succ: nat -> nat
+
+    add: nat, nat -> nat
+
+Variables
+    val1       : nat
+    val2       : nat
+
+initialState = add(succ(zero), succ(succ(zero)))
+//initialState = add(succ(succ(zero)), add(zero, zero))
+
+Strategies
+    Add = {add($val1, zero) -> $val1,
+           add($val1, succ($val2)) -> add(succ($val1), $val2)}
+
+    Try(V) = Choice(V, Identity)
+
+    Computations = Try(Add())
+
+Transitions
+    Compute = Computations()
+
+
+
+

@@ -1,0 +1,90 @@
+import "boolean.adt"
+
+Adt graph
+	Sorts
+		node;
+		edge;
+		graph;
+	Generators
+		//nodes
+		A : node;
+		B : ***;
+		C : ***;
+		D : ***;
+		
+		//an edge is a pair of nodes
+		edge : ***, *** -> edge;
+		
+		//inductive definition of a graph: it is a set of edges
+		empty : ***;
+		cons: ***, *** -> ***;
+
+	Operations
+		//source of an edge
+		source : edge -> ***;
+		//target of an edge
+		target : *** -> ***;
+		//remove an edge from the graph
+		remove : graph, *** -> graph;
+		// check if a node is terminal
+		isTerminal : graph, *** -> ***;
+		//check if there is an edge in the graph from a given node in source
+		existsEdge : graph, *** -> ***;
+		//get the first edge in the graph from a given node
+		getEdge : graph, *** -> edge; 
+		//check if there is a path from a node to another node
+		canReach : ***, ***, *** -> ***;
+		//tester si un noeud appartient ˆ un cycle
+		existsCycle : ***, *** -> ***;
+
+	Axioms
+		//source & target
+		source(edge($x, $y)) = ***;
+		target(***) = ***;
+		
+		//remove
+		remove(empty, $e) = empty;
+		if $e = $e1 then remove(cons($e1, $g), $e) = ***;
+		if *** then remove(***) = ***;
+		
+		//isTerminal
+		isTerminal(empty, $x) = false;
+		if *** then ***
+		if *** then ***
+		
+		//existsEdge
+		existsEdge(empty, $x) = false;
+		if *** then ***
+		if *** then ***
+		
+		//getEdge
+		if source($e) = $x then getEdge(***) = ***;
+		if *** then ***
+		
+		//canReach
+		//A node can always be reached from itself
+		if $x = $y then canReach($x, $y, $g) = ***;
+		if $x != $y then canReach($x, $y, empty) = ***;
+		if $x != $y & $g != empty & existsEdge($g, $x) = false then canReach($x, $y, $g) = ***;
+		if *** then canReach($x, $y, $g) = canReach(target(getEdge($g,$x)), $y, remove($g, getEdge($g, $x))) or ***;
+		
+		//existsCycle
+		***
+		***
+		***
+		
+	Theorems
+		canReach(A, D, cons(edge(A,C), cons(edge(A,B), cons(edge(B,C), cons(edge(D,C), cons(edge(C,A), empty)))))) = false;
+		canReach(A, C, cons(edge(A,C), cons(edge(A,B), cons(edge(B,C), cons(edge(D,C), cons(edge(C,A), empty)))))) = true;
+		canReach(A, A, empty) = true;
+		existsCycle(A, cons(edge(A,C), cons(edge(A,B), cons(edge(B,C), cons(edge(D,C), cons(edge(C,A), empty)))))) = true;
+		existsCycle(C, cons(edge(A,C), cons(edge(A,B), cons(edge(B,C), cons(edge(C,D), cons(edge(C,A), empty)))))) = true;
+		existsCycle(D, cons(edge(A,C), cons(edge(A,B), cons(edge(B,C), cons(edge(D,C), cons(edge(C,A), empty)))))) = false;
+		existsCycle(A, empty) = false;
+		existsCycle(A, cons(edge(A,A), empty)) = true;
+	Variables
+		x : node;
+		y : node;
+		e : edge;
+		e1 : edge;
+		g : graph;

@@ -1,0 +1,121 @@
+\chapter{Introduction sur la M\'etaheurisitque}
+\centerline{MHOA, Monday September 28} % Pas de numérotation
+%\addcontentsline{toc}{section}{Introduction} % Ajout dans la table des matières
+\begin{itemize}
+\section{\underline{$S$ Espace de recherche} }
+
+\item  Comme la heuristiques , le metaheuristiques n'offrent pas de garantie de suces.
+donc pour les problems pour lequels il existe un algorithmes exactes, il faut les utiliser et non les m\'etaheuritiques
+
+\section{\underline{Caract\'eristiques de m\'etaheuristiques}}
+
+\item On ne fait aucune hypothèse sur les propriétés mathématique de la fitness(continuité, dérivabilité)
+il faut seulement pouvoir calculer f en but $ x \in S$
+
+\item Elles utilisent des param\`etres de guidage on ne connait pas les valeurs optimiste de ces param\'etres qui augmente la qualit\'e de la solution et diminue le temps de calcul.
+
+\item Elles utilises des nombres al\`eatoires lors de l'expploration de $s$.
+Ce sont donc des m\'ethodes statistiques.
+
+\item Elles sont gourmande en CPU, mais facile \'a impl\'ementer, et plusieurs se parall\'elisent facilement.
+
+\item Elles n\'ecessitent une condition initiales pour explorer $s$ souvent elle est choisie au hasard.
+\item N\'ecessitent une condition d'arr\^et.
+Souvent c'est une limite du temps de calcule \boldmath{OU} encore une stagnation de la $Fitness$ de la meilleur solution trouv\'ee plus de progr\`es enregistr\'e
+\item Les m\'etaheuristiques combinent deux m\'ecanismes dans leur exploration :
+\begin{enumerate}
+
+\item \underline{intensification (ou exploitation)} on essaye d'am\'eliorer une solution pormeteuses]
+\item \underline{diversification (ou exploration)} on visite de nouvelles r\'egimes de de l'espace de trouver de meilleurs solutions
+\end{enumerate}
+\section{Principe de fonctionnement}
+
+On se d\'eplace de proche en proche de $S$ (Check dessin 1)
+
+On doit donc d\'efinir un voisinage qui sp\'ecifie les points candidat pour la suite de l'exploration.
+
+$(\textcolor{red}{Check the formula 2 and write it})$ avec $U$ l'op\'erateur de recherche
+
+\section{\underline{Comment peut on sp\'ecifi\'e le voisinage}}
+
+Naivement, on pouvait penser \'a une liste de voisins pour chaques point de $S$
+Pour des S qund, ce n'est pas possible.
+on va p\'ef\`erer une \'ecette qui perment de g\'en\'erer le voisinage de n'importe quel $x \in S$
+En pratique on d\'efinie les transformations (ou mouvement )
+$(\textcolor{red}{Check the formula 3 and write it})$
+
+$(\textcolor{red}{Check the formula 4 and write it})$
+
+\textcolor{green}{Certaines m\'etaheuritstiques  g\'en\`erent un voisin au hasard, en g\'en\`erale en tenant compte de la quantit\'e $\underbrace{(au  sens de Fitness)}$ de ce voisin }
+
+On peut Imaginer des voisinages heuristiques
+$(\textcolor{red}{Check the formula 5 and write it})$
+
+si aucun voisin dans $Vi(x)$ n'est int\'eressant (meilleur aue ce qu'on a d\'eja), on explore $Vi=1$. Si, \'a la fin de la hierarchie, on n'a rien trouv\'e, on s'arr\^ete.
+\subsection{Exemples d'eploration simples}
+\item  
+\paragraph*{Recherche al\'eatoire :} $U$ choisit au hasard dans $V(x)$ le successeurm ind\'ependament de la valeur de la $FITNESS$ \\
+- Si $V(x) = S$ on a la recherche al\'eatoire proposant  dite.
+\item Si $V(x)$ est local  \'a chaque $x$ on a ce qu'on appele une marche al\'eatoire 
+$(\textcolor{red}{Check the formula 6 and write it})$
+\item\underline{Grimpeur Strict(Hill climbing)}
+$U$ le voisin de fitness optimale dans $V(x)$. Avenc le risque au'on se bloque si on est d\'ej\'a \'a l'optimum.
+En g\'eneral, cela m\`ene \'a un optimum local
+
+\item \underline{Grimpeur probabiliste}
+On choisit un voisin au hasard avec une probabilit\'e d'autant plus grande que la fitness est bonne.
+Cela perment a priori de s'echapper d'un optimum
+
+\subsection{Exemple le maxOne}
+Il faut maximise rle nomber de 1 une chaine binaire.
+On va voir que le succ\'es d'une m\'etaheuritique d\'epend grandement du choix du codage du probl\'eme et des choix du voisinage.
+On va illustrer ce fait avec le grimpeur strict.
+Soit une cha\^ine de 3 bits $X1X2X3$
+On peut repr\'eenter l'espace de recherche comme l'ensemble des nombre entre 0 et 7 
+000 --> 0
+001 --> 1
+. . . 
+111 -->7
+$S = {0, 1, 2, ..., 7}$
+On d\'efinit dans le voisinage par exemple $V(x)={x-1, x, x+1}$\\
+$(\textcolor{red}{Check the formula 7 and write it})$\\
+\begin{lstlisting}
+\textcolor{red}{
+|
+|
+|                            .(max globale)
+|           .       .   .   
+|   .   .       .   
+--------------------------------
+    1   2   3   4   5   6   7
+    text}
+\end{lstlisting}
+La fitness est le nb de bit \'a 1 dans x
+
+\item\underline{Autre repr\'esentation: } L'espace de recherhce est ${0,1}^3$
+donc on garde la repr\'esentation binaire.
+la topologie du voisinage est contruite en utilisant une repr\'esentation en hypercube.\\
+$(\textcolor{red}{Check the formula 8 and write it})$
+
+Ce voisinage a la propri\'et\'e que les solutions sont voisinges si elles ne diff\'erent pas que par 1 bit.
+
+\section{Paysage de Fitness}
+(ou fitness landscape ou essayy landscape)
+C'est la repr\'esntation de la fonction fitness en fonction des point de S, et representatnt la topologie par le voisinage.\\
+$(\textcolor{red}{Check the formula 9 and write it})$
+
+On ne eut en g\'en\`ral pas dominer de facon {connait} le paysage de fitness.
+Mais ce qui le caract\'erise c'est l'importance des  {vancatins} de F entre 2 ponts voisins de S.
+
+\section{M\'ethode \'a population}
+Ce sont de m\'etaheuristiques qui consid\'ere \'a chque it\'eration un ensemble de solution possible (une population de slolution), \'a l'oppos\'e de m\'etaheuritique \'a 1 individu comme de suite pr\'ec\'edemment\\
+$(\textcolor{red}{Check the formula 10 and write it})$\\
+avec une population, on n'a pas de chance d etrouve une bonne solution mais cela perment plus de temps CPU
+
+la g\'en\'eraton \'a partir de PI se fait par une transformation qui d\'epend de tous les \'el\'ement de $Pi$. Voir par exemple les \underline{Algorithmes g\'en\'etiques}
+Formellemtn, l'espace de recherche devient \\ 
+\begin{center}
+$S^n=SxSxSxS...xS$
+\end{center}
+avec n individus qui \'evaluent en m\^eme temps.
+\end{itemize}

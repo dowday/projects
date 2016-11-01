@@ -1,0 +1,23 @@
+Adt boolean
+ Sorts bool;
+ Generators
+  true : bool;
+  false : bool;
+ Operations
+  not : bool -> bool;
+  and : bool, bool -> bool;
+  or : bool, bool -> bool;
+ Axioms
+  //not
+  not(true) = false;
+  not(false) = true;
+  //and
+  and(true, $bv) = $bv;
+  and(false, $bv) = false;
+  //or
+  or(true, $bv) = true;
+  or(false, false) = false;
+  or(false, true) = true;
+
+ Variables
+  bv : bool;
