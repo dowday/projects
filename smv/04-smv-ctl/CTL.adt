@@ -1,0 +1,114 @@
+import "atomicProp.adt"
+import "TR.adt"
+import "states.adt"
+import "setOfStates.adt"
+import "boolean.adt"
+
+//The ADT for the CTL formulas and their computation
+Adt CTL
+Sorts ctl;
+Generators
+  trueCTL: ctl;
+  falseCTL: ctl;
+  not: ctl -> ctl;
+  or: ctl, ctl -> ctl;
+  and: ctl, ctl -> ctl;
+  xor: ctl, ctl -> ctl;
+  implies: ctl, ctl -> ctl;
+  
+  atomic : prop -> ctl;
+  
+  EX : ctl -> ctl;
+  EF : ctl -> ctl;
+  EG : ctl -> ctl;
+  EU : ctl, ctl -> ctl;
+  AX : ctl -> ctl;
+  AF : ctl -> ctl;
+  AG : ctl -> ctl;
+  AU : ctl, ctl -> ctl;
+Operations
+  //normalForm of a CTL formule: it only contains the EX, EG and EU operators. The propositional logic operations
+  //will not be modified by this function
+  normalForm : ctl -> ctl;
+  
+  //getStates returns the set of states in a transition relation that validate a CTL formula. Can take any kind of
+  //formula
+  getStates : ctl, TR -> set;
+  //getStatesNormal is the same as getStates, but it only accepts formulas in the normal form as defined above
+  getStatesNormal : ctl, TR -> set;
+  
+  //fixpoint operators for the complex EG and EU algorithms
+  fixpointEG : TR, set -> set;
+  fixpointEU : ctl, TR, set -> set;
+  
+  //validate is a predicate to indicate if a given state validates a CTL formula
+  validate : ctl, TR, state -> bool;
+Axioms
+//***Normal form of formulas
+  //Propositional logic operators are not modified by normalForm
+  normalForm(trueCTL) = trueCTL;
+  normalForm(falseCTL) = falseCTL;
+  normalForm(not($ctl)) = not(normalForm($ctl));
+  normalForm(or($ctl, $ctl1)) = or(normalForm($ctl), normalForm($ctl1));
+  normalForm(and($ctl, $ctl1)) = and(normalForm($ctl), normalForm($ctl1));
+  normalForm(xor($ctl, $ctl1)) = xor(normalForm($ctl), normalForm($ctl1));
+  normalForm(implies($ctl, $ctl1)) = implies(normalForm($ctl), normalForm($ctl1));
+  
+  //An atomic proposition is already in normal form
+  normalForm(atomic($prop)) = atomic($prop);
+
+  //The operators EX, EG and EU are already in normal form. Note that the $ctl parameter must also be translated to its normal form!
+  normalForm(EX($ctl)) = EX(normalForm($ctl));
+  //TODO: normalForm 
+  normalForm(EG($ctl)) = EG(normalForm($ctl));
+  normalForm(EU($ctl, $ctl1)) = EU(normalForm($ctl), normalForm($ctl1));
+  
+  //The AU operator is by (very) far the most complex one, and thus we give it to you as an (horrible) example
+  normalForm(AU($ctl,$ctl1)) = and(not(EG(not(normalForm($ctl1)))),not(EU(not(normalForm($ctl1)),not(or(normalForm($ctl),normalForm($ctl1))))));
+
+//***Semantics
+  //getStates for normalizes a formula then calls getStatesNormal  
+  getStates($ctl, $tr) = getStatesNormal(normalForm($ctl), $tr);
+
+  //The basic logic operators can be implemented with set operators
+  getStatesNormal(trueCTL, $tr) = allStates($tr); 
+  getStatesNormal(falseCTL, $tr) = emptySet;
+  //The states that validate "not($ctl)" are all the states excepted those that validate "$ctl" 
+  getStatesNormal(not($ctl), $tr) = difference(allStates($tr), getStatesNormal($ctl, $tr));
+  //TODO: getStatesNormal for the propositional logic operators and atomic properties
+  // or
+  getStatesNormal(or($ctl, $ctl1), $tr) = union(getStatesNormal($ctl, $tr), getStatesNormal($ctl1, $tr));
+  // and
+  getStatesNormal(and($ctl, $ctl1), $tr) = intersect(getStatesNormal($ctl, $tr), getStatesNormal($ctl1, $tr));
+  // xor
+  getStatesNormal(xor($ctl, $ctl1), $tr) = getStatesNormal(and(or($ctl, $ctl1), not(and($ctl, $ctl1))), $tr);
+  // implies  
+  getStatesNormal(implies($ctl, $ctl1), $tr) = getStatesNormal(or($ctl1, not($ctl)), $tr);
+  
+  //Computing EG is a complex operation, it involves the fixpoint of the operation PRE($set) intersect $set
+  //The initial value for $set is the set of states that validate the inner formula
+  getStatesNormal(EG($ctl), $tr) = fixpointEG($tr, getStatesNormal($ctl, $tr));
+  //Final stage of the recursion: if the fixpoint has been reached, i.e., if PRE($set) intersect $set is equal to $set
+  if areequals(intersect(preSet($set, $tr), $set),$set) = true then fixpointEG($tr, $set) = $set;
+  //Recursive step, we check that the fixpoint has not been reached, and we re-execute the fixpoint by replacing $set with PRE($set) intersect $set 
+  if areequals(intersect(preSet($set, $tr), $set),$set) = false then fixpointEG($tr, $set) = fixpointEG($tr, intersect(preSet($set, $tr), $set)); 
+
+  // ************************** TODO: getStatesNormal for EX and EU
+  // EX
+  getStatesNormal(EX($ctl), $tr) = preSet(getStatesNormal($ctl, $tr), $tr); 
+  
+  // EU
+  getStatesNormal(EU($ctl, $ctl1), $tr)=  fixpointEU($ctl, $tr, union(intersect(preSet(getStatesNormal($ctl1, $tr), $tr), getStatesNormal($ctl, $tr)), getStatesNormal($ctl1, $tr)));
+  if areequals(union(intersect(preSet($set, $tr), getStatesNormal($ctl, $tr)), $set), $set)= true then fixpointEU($ctl, $tr, $set) = $set;
+  if areequals(union(intersect(preSet($set, $tr), getStatesNormal($ctl, $tr)), $set), $set)= false then fixpointEU($ctl, $tr, $set) = fixpointEU($ctl, $tr, union(intersect(preSet($set, $tr), getStatesNormal($ctl, $tr)), $set));
+   
+  
+  //A formula is valid for some state if this state is included in the states that validate the formula, see "getStates"
+  //TODO: validate
+Variables
+  ctl : ctl;
+  ctl1 : ctl;
+  prop : prop;
+  tr : TR;
+  state : state;
+  set : set;

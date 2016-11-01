@@ -1,0 +1,9 @@
+import "setOfStates.adt"
+
+//Atomic propositions: we say that there will be some atomic propositions (sort "prop") and
+//a function "mu" that will associate these propositions with some states. The actual
+//propositions and function "mu" shall be described elsewhere (see example.adt)
+Adt atomicProp
+Sorts prop;
+Operations
+  mu : prop -> set;

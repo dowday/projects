@@ -1,3 +1,0 @@
-s($x) divide s($x) = s(zero)
-$x ge $x = true
-zero ge zero = true

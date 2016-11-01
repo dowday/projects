@@ -1,0 +1,28 @@
+import "states.adt"
+import "pairOfStates.adt"
+import "setOfStates.adt"
+
+//ADT for the transition relation. Note that this implementation does not correspond exactly to the formal
+//definition given in the course. Note also that we consider that our transition relations are connected.
+Adt TR
+Sorts TR;
+Generators
+  emptyTR : TR;
+  tr : pair, TR -> TR;
+Operations
+  //All the states included in a transition relation
+  allStates : TR -> set; 
+  //The predecessors of some state
+  pre : state, TR -> set;
+  //The predecessors of a set of states
+  preSet : set, TR -> set;
+Axioms
+  allStates(emptyTR) = emptySet;
+  allStates(tr($pair, $tr)) = add(add(allStates($tr), to($pair)),from($pair));
+  
+  TODO: pre and preSet
+Variables
+  state : state;
+  tr : TR;
+  pair : pair;
+  set: set;

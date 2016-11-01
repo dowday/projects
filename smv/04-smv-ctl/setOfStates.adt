@@ -1,0 +1,37 @@
+import "states.adt"
+import "boolean.adt"
+
+//Sets and set operations
+Adt setOfStates
+Sorts set;
+Generators
+  emptySet : set;
+  cons : state, set -> set;
+Operations
+  //add an element to a set (checks unicity)
+  add : set, state -> set;
+  //remove an element to a set
+  remove : set, state -> set;
+  
+  //check if a set contains a given state
+  contains : set, state -> bool;
+  //union of two sets (checks unicity)
+  union: set, set -> set;
+  //intersection of two sets
+  intersect : set, set -> set;
+  //difference of two sets, difference(A,B) = A-B, i.e., the states that are in A but not in B
+  difference : set, set -> set;
+  //equality between two sets, independently from the order
+  areequals : set, set -> bool;
+
+Axioms
+  add(emptySet, $state) = cons($state, emptySet);
+  if $state = $state1 then add(cons($state, $set), $state1) = cons($state, $set);
+  if $state != $state1 then add(cons($state, $set), $state1) = cons($state, add($set, $state1));
+  
+  TODO: remove, contains, union, intersect, difference, areequals
+Variables
+  state : state;
+  state1 : state;
+  set : set;
+  set1 : set;

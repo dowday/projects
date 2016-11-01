@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apnmm:APN xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:apnmm="http://alpina.unige.ch/apnmm" name="CTL">
+  <ownedImports importURI="atomicProp.adt"/>
+  <ownedImports importURI="pairOfStates.adt"/>
+  <ownedImports importURI="states.adt"/>
+  <ownedImports importURI="setOfStates.adt"/>
+  <ownedImports importURI="CTL.adt"/>
+  <ownedImports importURI="TR.adt"/>
+  <ownedImports importURI="boolean.adt"/>
+  <ownedImports importURI="example.adt"/>
+</apnmm:APN>
