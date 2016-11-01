@@ -1,0 +1,89 @@
+% Inspiré de http://en.wikibooks.org/wiki/LaTeX/Title_Creation
+
+\begin{titlepage}
+
+\newcommand{\reporttitle}{\LARGE Series  6 : Genetic Algorithms and Function
+Minimization
+}     % Titre
+\newcommand{\reportauthor}{Mohammad Oday \textsc{Darwich}} % Auteur
+\newcommand{\reportsubject}{ Métaheuristiques pour l'Optimisation\\Homework Assignment Report}  % Sujet
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\setlength{\parskip}{1ex} % Espace entre les paragraphes
+
+\hypersetup{
+    pdftitle={\reporttitle},%
+    pdfauthor={\reportauthor},%
+    pdfsubject={\reportsubject},%
+    pdfkeywords={rapport} {vos} {mots} {clés}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{center}
+
+%\begin{minipage}[t]{0.5\textwidth}
+%  \begin{flushleft}
+%    \includegraphics [width=5cm]{images/fac_sciences_pant.eps} \\[1cm]
+%    \begin{spacing}{0.35}
+%      \textsc{\LARGE Université de Genève}
+%    \end{spacing}
+%  \end{flushleft}
+%\end{minipage}
+\begin{minipage}{\textwidth}
+ % \begin{flushright}
+    \includegraphics {../images/dinfo_pant.eps}\\
+   \centering\textsc{\LARGE Master of Computer Science}
+  %\end{flushright}
+\end{minipage} \\[2cm]
+
+\textsc{\Large \reportsubject}\\[1cm]
+\HRule \\[1cm]
+{\huge \bfseries \reporttitle}\\[0.5cm]
+\HRule \\[2cm]
+
+\begin{minipage}[t]{0.6\textwidth}
+  \begin{flushleft} \large
+    \emph{Author:}\\
+    \reportauthor
+  \end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.39\textwidth}
+  \begin{flushright} \large
+    \emph{Professors:} \\
+    M.~Bastien \textsc{ Chopard } \\ %Enseignant:  
+    Mme.~Aziza \textsc{Merzouki }\\
+    M.~Gregor \textsc{Chliamovitch} %Assistante: Cristina Muñoz
+  \end{flushright}
+%  \begin{flushright} \large
+%      \emph{Assistant Professor:} \\
+%      Mme.~Ke \textsc{Sun} \\ %Enseignant:  
+%      %M.~Sviatoslav  \textsc{Voloshynovskyy} %Assistante: Cristina Muñoz
+%    \end{flushright}
+\end{minipage}
+
+\vfill
+
+%{ \today}%
+{\large 21 novembre 2015}
+
+\end{center}
+
+\end{titlepage}

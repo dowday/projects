@@ -1,0 +1,56 @@
+
+\section{Elucider l'algorithme}
+\subsection{Propri\'et\'es de l'algorithme}
+Une m\'ethaheuristique de colonie de fourmis est un processus stochastique constuisant une solution, en ajoutant des composants aux solutions partielles. Ce processus prend en compte
+\begin{itemize}
+\item une heuristique du probl\`eme
+\item des pistees de ph\'eromone changeant dynamiquement pour refl\'eter l'exp\'erience acquise par les agents.
+\end{itemize}
+
+Dans l'algorithme $AS$ \'a chaque it\'eration $t\ ( 1 \leq t \leq t_{\textit{max}})$, chaque fourmi $K\ (k= 1,...,m)$ parcourt le graphe et construit un trajet complet de $n = \mid \textit{N} \mid$ \'etapes. Pour chaque fourmi, le trajet entre une ville $i$ et une ville $j$ d\'epend de :
+\begin{enumerate}
+\item La liste des villes d\'ej\`a visit\'ees, qui d\'efinit les mouvements possibles \`a chaque pas, quand la fourmi $ k $ est sur la ville $ i $ : $ J_i^k $;
+\item l'inverse de la distance entre les villes: $ \eta_{ij} = \frac{1}{d_{ij}} $, $ the heuritic information $cette information statique est utilis\'ee pour diriger le choix des fourmis vers des villes proches, et \'eviter les villes trop lointaines;
+
+\item la quantit\'e de ph\'eromone d\'epos\'ee sur l'ar\^ete reliant les deux villes. Ce param\`etre d\'efinit l'attractivit\'e d'une partie du trajet global et change \`a chaque passage d'une fourmi. C'est en quelque sorte une m\'emoire globale du syst\`me, qui \'evolue par apprentissage.
+\end{enumerate}
+La r\`egle de d\'eplacement est alors la suivante :
+\begin{equation}
+P_{ij}^k(t)= \left\{
+\begin{array}{ll}
+
+\frac{\tau_{ij}(t)^\alpha(\eta_{ij})^\beta}{\displaystyle\sum_{\ell\in
+J_i^k}{\tau_{ij}(t)^\alpha(\eta_{ij})^\beta}}\  if\ j\ \in\ J^k\\
+0 \ \hfill otherwise\ \sim j \notin  J^k 
+\end{array}
+\right.\textbf{o\`u}
+\end{equation}
+\begin{itemize}
+\item \boldmath{$ \alpha $} et \boldmath{$ \beta $} contr\^olent l'importance relative du ph\'eromone versus \textit{the heuristic information} $ \eta_{ij} $\\
+\end{itemize}
+
+Apr\`es un tour complet (chaque it\'eration), chaque fourmi laisse une certaine quantit\'e de ph\'eromones $ \Delta\tau_{ij}^k(t) $ sur l'ensemeble de son parcours, quantit\'e qui d\'epend de la \textit{qulit\'e} de la solution trouv\'ee:
+\begin{equation}
+\Delta_{ij}^k(t)= \left\{
+\begin{array}{ll}
+
+\frac{Q}{L^k(t)}\  if\ ant\ k\ used\ edge\ (i,j) in\ its\ tour\ \hfill \sim if\ (i,j)\ \in\ T_k(t)\\
+0 \ \hfill  otherwise\ \hfill \sim if (i,j)\ \notin\ T_k(t)
+\end{array}
+\right.\textbf{o\`u}
+\end{equation}
+
+\begin{itemize}
+\item \boldmath{$T_k(t)$} est le trajet effectu\'e par la fourmi $k$ \`a l'it\'eration $t$; \boldmath{$ L^k(t)$} est la longueur du tour; \boldmath{Q} is a constant;\\
+\end{itemize}
+
+Comme on a dans l'\'enonc\'e l'\'equation de mise \`a jour du ph\'eromone $ \tau_{ij} $ donn\'ee par:
+\begin{equation}
+\tau_{ij}(t+1) = (1-\rho)\tau_{ij}(t) + \displaystyle\sum_{k=1}^{m}\Delta\tau_{ij}^k(t)
+\end{equation}
+O\`u
+\begin{itemize}
+\item \boldmath{m} est le nombre de fourmis;
+\item \boldmath{$\rho$} est l'évaporation du phéromones ;
+\end{itemize}
+En effet pour éviter d'être pi\'eg\'e dans des solutions sous-optimales, il est nécessaire de permettre au système d'oublier les mauvaises solutions. On contrebalance donc l'additivité  des phéromones par une décroissance constante des valeurs des ar\^etes \'a chaque itération.

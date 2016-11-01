@@ -1,0 +1,26 @@
+\section{Interpretation}
+
+% % figure of the two implementation 
+We see from the experiences of \ref{exp:exp10100} and \ref{exp:exp101000} that there are no big difference in the prediction, it's 1 \% , instead there are a little influence of the \textbf{MaxIt}, the fitness increase for 4.2 \%.\\
+Comparing the experience \ref{exp:exp10100} and the \ref{exp:exp30100} see that the \textit{Perror}  less then exp \ref{exp:exp10100} by 0.88 \%.
+
+so that mean increasing the number of particles may the system learn more the behavior and so we get better fitness by 4.2 \% more then a 1/3 number of particles of the exp \ref{exp:exp30100}.
+
+So, from the 4th experiments, \ref{exp:exp30100}, \ref{exp:exp301000}, \ref{exp:exp10100} and \ref{exp:exp101000},  we can deduce that more the number of iteration increase more we will have a well training but we have to do also the trade off for choosing the number of particles because decreasing the value of \textit{nPop} may give a bad result, and increasing it do not mean we will get good results.
+
+\section{Conclusion}
+
+We see that particles are independent so each one is like a software and there are informations to be communicated between each other, so it's kind of \textit{parallelism algorithm}. So, it has no crossover between individual particles.
+
+\textbf{PSO} We see that the fitness shut down quickly then we go to a local minimum and this escape some area of research, but according the results above we see that the \textit{$ P_{error} $} doesn't exceed the 0.27 and the smallest min attend 0.23 so that mean that our choice off parameter was fairly valued and also the fitness is more and more closer to zero and so more desirable.
+
+In \textbf{PSO}, Velocities of particles are typically limited to a maximum velocity $ V_{max} $. We can change the maximum velocity as we want and after changing it many times during an execution for number of iteration between $ 50 $ and $ 300 $ we see that the larger $ V_{max} $ helps towards global exploration, and conversely a smaller Vmax promotes local exploitation.
+
+
+
+The trade off between chosen parameter can make a different result, better or bad it's depend and that appear in the fitness and the \textit{Perror} values.
+So the parameter must be carefully set since too little velocity means the swarm will converge on the first good solution that is found, while too much means the swarm may never converge on a solution.
+
+
+
+

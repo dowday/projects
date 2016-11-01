@@ -1,0 +1,22 @@
+Dans cet expérience, on prend une population de 100, qu'on fait évoluer 100 fois avec selection, crossover et mutation, ainsi je fais fixer $ p_c $ et varier $ p_m $ d'une façon croissante.
+\begin{table}[H]
+{\renewcommand{\arraystretch}{1.2}} 
+\centering
+\caption{Results with changing parameters of $ p_c\ \&\ p_m $}
+\vspace{+5mm}
+\label{}
+\begin{adjustbox}{width=\linewidth}
+\begin{tabular}{|c|c|c|c|c|c|}
+
+\hline
+\multicolumn{1}{|c|}{}                                  & \multicolumn{5}{c|}{\texttt{popSize = 100}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          \\ \hline
+\multicolumn{1}{|c|}{\texttt{Res\textbackslash params}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}$p_c$ = 0.6\\ $p_m$= 0.01\end{tabular}}                         & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}$p_c$ = 0.6\\ $p_m$=0.1\end{tabular}}                          & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}$p_c$ = 0.6\\ $p_m$=0.2\end{tabular}}                         & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}$p_c$ = 0.6\\ $p_m$= 0.4\end{tabular}}                          & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}$p_c$ = 0.6\\ $p_m$=0.5\end{tabular}}                          \\ \hline
+\multicolumn{1}{|c|}{\texttt{Best F}}                   & \multicolumn{1}{c|}{3.0}                                                                                     & \multicolumn{1}{c|}{3.0}                                                                                    & \multicolumn{1}{c|}{1.0}                                                                                   & \multicolumn{1}{c|}{3.0}                                                                                     & \multicolumn{1}{c|}{3.0}                                                                                    \\ \hline
+\multicolumn{1}{|c|}{\texttt{Mean}}                     & \multicolumn{1}{c|}{3.0}                                                                                     & \multicolumn{1}{c|}{3.4}                                                                                    & \multicolumn{1}{c|}{1.48}                                                                                  & \multicolumn{1}{c|}{2.98}                                                                                     & \multicolumn{1}{c|}{3.0}                                                                                    \\ \hline
+\multicolumn{1}{|c|}{\texttt{STD}}                      & \multicolumn{1}{c|}{0.0}                                                                                     & \multicolumn{1}{c|}{0.28141058827257937}                                                                                    & \multicolumn{1}{c|}{0.8584693919818557}                                                                    & \multicolumn{1}{c|}{0.2}                                                                                     & \multicolumn{1}{c|}{0.0}                                                                                    \\ \hline
+\multicolumn{1}{|c|}{\texttt{}}                         & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}{[}'X1', 'X1', 'X2', \\ 'X3', 'X3', 'XOR'{]}\end{tabular}}    & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}{[}'X1', 'X2', 'X4',\\  'XOR', 'X4', 'AND'{]}\end{tabular}}  & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}{[}'X2', 'X3', 'OR', \\ 'NOT', 'X4', 'AND'{]}\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}{[}'X1', 'X2', 'X4',\\  'X1', 'X1', 'XOR'{]}\end{tabular}}    & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}{[}'XOR', 'X3', 'X4',\\  'OR', 'X3', 'XOR'{]}\end{tabular}}  \\ 
+\hline
+\end{tabular}
+
+\end{adjustbox}
+\end{table}

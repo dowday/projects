@@ -1,0 +1,21 @@
+# I create also a exo1.py, so we could just lunch it in the
+# interpreter usring :
+# >python3.5 exo1.py
+
+# Interpreter task: 
+
+words = ["how", "why", "however", "where", "never"]
+
+# direct display : 
+
+for x in words :
+	print('* ' + x[0:2] + ' ' + x)
+
+	
+for x in words :
+	if x.startswith('wh'):
+		print('* ' + x[0:2] + ' ' + x)
+	else:
+		print('- ' + x[0:2] + ' ' + x)
+
+

@@ -1,0 +1,110 @@
+C:/Users/mod/OneDrive/2015-2016/Uni/AutumnSem2015/iTALN/TALN_TP/TP6-HMM/gene
+C:/Users/mod/OneDrive/2015-2016/Uni/AutumnSem2015/iTALN/TALN_TP/TP6-HMM/TP5/gene.counts2.txt
+"C:/Users/mod/OneDrive/2015-2016/Uni/AutumnSem2015/iTALN/TALN_TP/TP6-HMM/gene/gene.counts"
+
+C:/Users/mod/OneDrive/2015-2016/Uni/AutumnSem2015/iTALN/AV_TALN/TALN_AV3/TP5sar/TP5
+
+
+
+with open("C:/Users/mod/OneDrive/2015-2016/Uni/AutumnSem2015/iTALN/TALN_TP/TP6-HMM/gene/gene.counts") as f:
+	content = f.readlines()
+
+c = []
+for i in range(len(content)):
+	a = content[i]
+	a = a.split()
+	c.append(a)
+
+words = {}
+for i in range(len(c)):
+	if c[i][1] == 'WORDTAG':
+		if c[i][3] in words:
+			words[c[i][3]].append(c[i][0])
+			words[c[i][3]].append(c[i][2])
+		else:
+			words[c[i][3]] = [c[i][0], c[i][2]]
+
+for i in range(len(c)):
+	if '1-GRAM' in c[i] and '0' in c[i]:
+		count0 = c[i][0]
+	if '1-GRAM' in c[i] and '1' in c[i]:
+		count1 = c[i][0]
+with open("C:/Users/mod/OneDrive/2015-2016/Uni/AutumnSem2015/iTALN/TALN_TP/TP6-HMM/gene/gene.dev") as f:
+	# a= f.readlines()
+	a = [line[:-1] for line in f]
+evalues = {}
+f = open("C:/Users/mod/OneDrive/2015-2016/Uni/AutumnSem2015/iTALN/TALN_TP/TP6-HMM/gene/gene.dev", 'w')
+for i in range(len(a)):
+	word = a[i]
+	if not word:
+		f.write("/n")
+	else:
+		E = emission(a[i], words, count0, count1)
+		f.write("{} {}/n".format(word, E[0]))
+		evalues[word] = [E[1], E[2]]  # assign for each word its e(O) and e(I)
+
+		f.close()
+		 ##############
+		Gramvalue={}
+		for i in range (len(c)):
+		    if c[i][1]== '2-GRAM':
+		        if c[i][2]=='1' and c[i][3]=='1':
+		            Gramvalue['11']= float (c[i][0])
+		        if c[i][2]=='0' and c[i][3]=='0':
+		            Gramvalue['00']= float (c[i][0])
+		        if c[i][2]=='1' and c[i][3]=='0':
+		            Gramvalue['10']= float (c[i][0])
+		        if c[i][2]=='0' and c[i][3]=='1':
+		            Gramvalue['01']= float (c[i][0])
+		        if c[i][2]=='*' and c[i][3]=='0':
+		            Gramvalue['*0']= float (c[i][0])
+		        if c[i][2]=='0' and c[i][3]=='STOP':
+		            Gramvalue['*0STOP']= float (c[i][0])
+		        if c[i][2]=='*' and c[i][3]=='*':
+		            Gramvalue['**']= float (c[i][0])
+		    if c[i][1]== '3-GRAM':
+		        if c[i][2]=='0' and c[i][3]=='0' and c[i][4]=='1':
+		            Gramvalue['001']=float (c[i][0])
+		        if c[i][2]=='1' and c[i][3]=='0' and c[i][4]== '0':
+		            Gramvalue['100']=float (c[i][0])
+		        if c[i][2]=='1' and c[i][3]=='0' and c[i][4]== '1':
+		            Gramvalue['101']=float (c[i][0])
+		        if c[i][2]=='0' and c[i][3]=='1' and c[i][4]== '1':
+		            Gramvalue['011']=float (c[i][0])
+		        if c[i][2]=='1' and c[i][3]=='1' and c[i][4]=='0' :
+		            Gramvalue['110']=float (c[i][0])
+		        if c[i][2]=='1' and c[i][3]=='1' and c[i][4]=='1':
+		            Gramvalue['111']=float (c[i][0])
+		        if c[i][2]=='0' and c[i][3]=='1' and c[i][4]=='0' :
+		            Gramvalue['010']=float (c[i][0])
+		        if c[i][2]=='0' and c[i][3]=='0' and c[i][4]=='0' :
+		            Gramvalue['000']=float (c[i][0])
+		        if c[i][2]=='0' and c[i][3]=='0' and c[i][4]=='STOP' :
+		            Gramvalue['00STOP']=float (c[i][0])
+		        if c[i][2]=='*' and c[i][3]=='*' and c[i][4]=='0' :
+		            Gramvalue['**0']=float (c[i][0])
+		        if c[i][2]=='*' and c[i][3]=='0' and c[i][4]=='0' :
+		            Gramvalue['*00']=float (c[i][0])
+
+		I= '1'
+		O= '0'
+
+		def q(): #This funciton calculate the Qs
+			q1 = (Gramvalue['111']/Gramvalue['11'])*(Gramvalue['011']/Gramvalue['OI'])*(Gramvalue['101']/Gramvalue['IO'])*(Gramvalue['OOI']/Gramvalue['OO'])
+			q0 = (Gramvalue['110']/Gramvalue['11'])*(Gramvalue['010']/Gramvalue['OI'])*(Gramvalue['100']/Gramvalue['IO'])*(Gramvalue['OOO']/Gramvalue['OO'])
+			return q1, q0
+		"""q1 = Gramvalue['**1']/Gramvalue['**']
+		q0 = Gramvalue['**0']/Gramvalue['**']"""
+		f= open("C:/Users/mod/OneDrive/2015-2016/Uni/AutumnSem2015/iTALN/AV_TALN/TALN_AV3/TP5sar/TP5/gene.dev.p1.out2.txt", 'w')
+		for i in range(len(a)):
+			if not word:
+				f.write("/n")
+			elif i>1:
+				R= q()
+				R1= R[0]* evalues[a[i]][1]
+				R0= R[1] * evalues[a[i]][0]
+				if R1>R0:
+					f.write("{} {}/n".format(word,I))
+				else:
+					f.write("{} {}/n".format(word,O))
+		f.close()

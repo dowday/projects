@@ -1,0 +1,233 @@
+
+% %\centerline{MHOA, Monday September 28} % Pas de numérotation
+%\addcontentsline{toc}{section}{Introduction} % Ajout dans la table des matières
+
+\section{Introduction}
+
+Genetic algorithms have been used in science and engineering as adaptive algorithms for solving practical problems and as computational models of natural evolutionary systems.
+
+But in more concrete term what is GA ?
+\begin{itemize}
+\item[] A genetic algorithm (or GA) is a search technique
+used in computing to find true or approximate
+solutions to optimization and search problems.
+\item[$ \bullet $](GA)s are categorized as global search heuristics.
+\item[$ \bullet $](GA)s are a particular class of evolutionary algorithms that use techniques inspired by
+evolutionary biology such as inheritance,
+mutation, selection, and crossover (also called
+recombination)
+\item[$ \bullet $] The evolution usually starts from a population
+of randomly generated individuals and
+happens in generations. 
+\item[$ \bullet $] In each generation, the fitness of every
+individual in the population is evaluated,
+multiple individuals are selected from the
+current population (based on their fitness), and
+modified to form a new population.
+\item[$ \bullet $] The new population is used in the next iteration
+of the algorithm.\cite{Generalintro}
+\end{itemize}
+generation=0
+initialize population
+while (not end-condition)
+generation+=1
+compute the fitness of each individual
+select individuals
+crossover
+mulation
+end while
+
+\section{Pseudo code of GA and how we implement it}
+\begin{algorithm}
+\caption{GA Genetic algorithm}\label{GAalgorithm}
+	\begin{algorithmic}[1]
+		\State generation = 0
+		\State initialize population
+		\While{(not end-condition)}
+		\State generation +=1
+		\State compute the fitness of each individual
+		\State select individuals
+		\State crossover
+		\State mutaion
+		\EndWhile\\
+		{	$P(t)\ \xrightarrow[]{Select}\ P'(t)\ \xrightarrow[]{crossover}\ P''(t)\xrightarrow[]{mutation} P'''(t) = P(t+1)$}
+	\end{algorithmic}
+\end{algorithm}
+
+So how it works the pseudo code above, matching with parameters and criteria of this TP:\\
+After initializing the population of size 100, \textit{pop\_size}, we compute the \textit{fitness function }from the following fitness function :
+\begin{equation}
+f(x,y) =  - |\frac{1}{2}\ x\ sin(
+\sqrt{|x|})\mathopen{|}  - \mathopen{|} y\ sin(30\ \sqrt{|\frac{x}{y}|}) \mathopen{|} 
+\end{equation}
+where x, y $ \in $  [10, 1000] $ \cap $  $\mathbb{N}$
+\begin{itemize}
+\item \textbf{Step 1: select individual}\footnote{We will see in the result that this operator ten to the intensification} consist of selecting an individual from the population, the one with the best cost and to do that here we use the \textit{\textbf{k-tournament}} method, here we use the 5-tournament.
+\item \textbf{Step 2: crossover}\footnote{the crossover and mutation tend to the diversification} we mate strings of two parents for crossover. For each
+couple we first decide (using some pre-defined probability 
+ $P_{crossover}$\footnote{$ P_{crossover} $ in the code denoted \textit{pc}}, for instance 0.6) and here an example showing before and after crossover
+\begin{itemize}
+\item[$ \curvearrowleft $] \textbf{Before} $ s'_1 = 11\textcolor{red}{110}10101\ s'_2 = 11\textcolor{blue}{101}10101 $
+\item[$ \curvearrowright $] \textbf{After }  $\ s'_1 = 11\textcolor{blue}{101}10101\ s'_2 = 11\textcolor{red}{110}10101 $
+\end{itemize}
+\item \textbf{The final step: mutation\footnote{The mutation is to make random perturbation in the coding of the induvidual }}for these n new individuals we mutate with $P_{mutation}=0.01$\footnote{$ P_{mutation} $ in the code denoted \textit{pm}} in the 1st experiment and  $ P_{mutation} = 0.1$ in the 2nd experiment, and the mutation is as the following:
+\begin{itemize}
+\item[$ \curvearrowleft $] \textbf{Before} $ s''_1 =  11101\textcolor{blue}{1}0101\ s''_2 =\ 1111\textcolor{blue}{0}1010\textcolor{blue}{1} $
+\item[$ \curvearrowright $] \textbf{After }  $ s'''_1 = 11101\textcolor{blue}{0}0101\ s'''_2 = 1111\textcolor{blue}{1}1010\textcolor{blue}{0} $
+and so on...
+\end{itemize}
+\end{itemize}
+And now, we \textbf{{\large iterate}}, i a  generation we can see the total population fitness change and we will see how it will be improved.\\
+So at this point, we go through the same process all over again, {\large \textbf{until the stopping criterion is met}}.
+\section{Done Work}
+\subsection{Function visualization}
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{\PathResVisual/Visualisation3D.eps}
+		\caption{Path journey}\label{fig:Visualisation3D:PathResVisual}
+\end{figure}
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{\PathResVisual/VisualisationMin.eps}
+		\caption{3D visualization}\label{fig:VisualisationMin:PathResVisual}
+\end{figure}
+
+\subsection{Tests and evaluation}
+\subsection*{Experiments with 2 differents probabilities of mutation pm and crossover pc:}
+In the following example we will see the different experiments following to this table:
+\begin{table}[H]
+\centering
+\caption{Table of parameteres of done experiments}
+\vspace{+6mm}
+\label{tab:doneexp}
+\begin{tabular}{|c|c|c|l|l|}
+\hline
+pc                         & 0.0                                       & 0.0                                       & 0.6                  & 0.6  \\ \hline
+pm                         & 0.1                                       & 0.01                                      & 0.1                  & 0.01 \\ \hline
+\multicolumn{1}{|l|}{gmax} & \multicolumn{1}{l|}{10\textasciicircum 3} & \multicolumn{1}{l|}{10\textasciicircum 4} & 10\textasciicircum 5 & --    \\ \hline
+\end{tabular}
+\end{table}
+\pagebreak
+The selection gives more chance to particular individuals of good quality to be in the next population. But of course we have to add an element of innovation, without which no new solution can not emerge. The change required is provided by the genetic operators of crossover and mutation.
+And as you see below i did many experiments varying these parameters to see the differences.\\
+We see below the results after 10\textasciicircum 3 evaluation, with the mean of fitness and the STD and the success rate.\\
+\subsection{interpretation of results}
+\begin{itemize}
+\item From the results below, we see that without crossover and with prob of mutation equal to 0.1 the success rate is 0.08 and it go down to zero with $ P_m = 0.01 $ and it the same case for $ 10^4\ and\ 10^5 $ but the success rate go up respectively to $ 0.28\ and\ 0.48 $ so more the number execution increase more the success rate increase.
+
+\item we see that in the space of generation the total is ameliorated for 2.28 \% .
+\end{itemize}
+
+This result is also like that because of the  non diversity (without crossover) so we see that the mutation has a negative effect even if occasionally it can ameliorate the results. 
+
+
+\begin{table}[H]
+\centering
+\caption{Exp1 for after 10\textasciicircum 5 evaluation}
+\vspace{+6mm}
+\label{tab:tenpower5}
+\begin{tabular}{|c|l|l|c|}
+\hline
+\multicolumn{4}{|c|}{Exp1 for after 10\textasciicircum 5 evaluation} \\ \hline
+\input{\PathResAvefit/AveragefitWS06011000} & \input{\PathResAvefit/AveragefitWS060011000} & \input{\PathResAvefit/AveragefitWS0011000} & \input{\PathResAvefit/AveragefitWS00011000} \\ \hline
+\end{tabular}
+\end{table}
+
+The average number of iteration to reach the optimum value for all the experiments in the table  \ref{tab:doneexp} it's 9, 20, 13, 9 with respectively and STD of 17, 30, 14, 3.
+
+
+\section{Discussion 1}
+After referring to the resuls on table  \ref{tab:tenpower3}, \ref{tab:tenpower4} and \ref{tab:tenpower5} we see that the mutation has an importatn impact on the quality of solution. and also wee see that with a probability of crossover equal to 0.6 we have better results. so we have better result with an important percentage of  probability of mutation and also for the mid-break crossover there are no improvement for the solutions, because in the function we have many local minima.
+However the mutation improve the solutions. so the mutation at the end avoid the local minima.
+
+
+\section{The cumulative empirical probability results and Disccusion 2}
+
+\begin{figure}[H]
+	\begin{minipage}[t]{0.5\linewidth}
+		\includegraphics[width=\linewidth]{\PResCumEmpmill/figCumuEmpPrs00s01.eps}
+		\caption{Cumulative empirical probability without crossover }
+		\label{fig:figCumuEmpPrs00s01:PResCumEmpmill}
+	\end{minipage}
+	\hspace{2mm}
+	\begin{minipage}[t]{0.5\linewidth}
+	\includegraphics[width=\linewidth]{\PResCumEmpmill/figCumuEmpPrs00s001.eps}
+	\caption{Cumulative empirical probability without crossover}
+	\label{fig:figCumuEmpPrs00s001:PResCumEmpmill}
+	\end{minipage}
+\end{figure}
+
+
+\begin{figure}[H]
+	\begin{minipage}[t]{0.5\linewidth}
+		\includegraphics[width=\linewidth]{\PResCumEmpmill/figCumuEmpPrs06s01.eps}
+		\caption{Cumulative empirical probability with crossover}
+		\label{fig:figCumuEmpPrs06s01:PResCumEmpmill}
+	\end{minipage}
+	\hspace{2mm}
+	\begin{minipage}[t]{0.5\linewidth}
+	\includegraphics[width=\linewidth]{\PResCumEmpmill/figCumuEmpPrs06s001.eps}
+	\caption{Cumulative empirical probability with crossover}
+	\label{fig:figCumuEmpPrs06s001:PResCumEmpmill}
+	\end{minipage}
+\end{figure}
+
+From the figure \ref{fig:figCumuEmpPrs06s001:PResCumEmpmill} above we see that without crossover that the optimum in the optimum has not been reached, and this show that we have a local optimum, and that affirm what i just said before that mutation has a negative effect (more local minima).
+
+The better result we have is when $ P_m = 0.6 $ and $ P_c=0.1 $ as seen in the figure \ref{fig:figCumuEmpPrs06s01:PResCumEmpmill}, best solution ( fitness improved) with lower standard deviation. also the quality of solution do not vary so much as seen in the results of the tables on the annex.
+
+
+\section{Conclusion}
+As conclusion we can say that more value of generation increase more the fitness getting better. and at a number of generation like 9 in our case the optimal solution is found. but also the space of research was not blocked in all case. so this landscape fitness is easy for an algorithm AG.\\
+The average fitness continues to improve over time showing a population becoming more and more homogeneous.\\
+And Because of the stochastic nature of evolutionary algorithms, their performance is not the same on various execution, unless one uses the same parameters and the same generation value. but in another side the average of many execution indicate the viability of the algorithm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\pagebreak
+\section*{Annex}
+
+\begin{table}[H]
+\centering
+\caption{Exp1 for after 10\textasciicircum 3 evaluation}
+\vspace{+6mm}
+\label{tab:tenpower3}
+\begin{tabular}{|c|l|l|c|}
+\hline
+\multicolumn{4}{|c|}{Exp1 for after 10\textasciicircum 3 evaluation} \\ \hline
+\input{\PathResAvefit/AveragefitWS060110} & \input{\PathResAvefit/AveragefitWS0600110} & \input{\PathResAvefit/AveragefitWS00110} & \input{\PathResAvefit/AveragefitWS000110} \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{Exp1 for after 10\textasciicircum 4 evaluation}
+\vspace{+6mm}
+\label{tab:tenpower4}
+\begin{tabular}{|c|l|l|c|}
+\hline
+\multicolumn{4}{|c|}{Exp1 for after 10\textasciicircum 4 evaluation} \\ \hline
+\input{\PathResAvefit/AveragefitWS0601100} & \input{\PathResAvefit/AveragefitWS06001100} & \input{\PathResAvefit/AveragefitWS001100} & \input{\PathResAvefit/AveragefitWS0001100} \\ \hline
+\end{tabular}
+\end{table}

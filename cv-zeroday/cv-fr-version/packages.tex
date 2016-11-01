@@ -1,0 +1,106 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{color, colortbl}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage[margin=15mm]{geometry}
+\usepackage{soul} % Used for the title name (eg. the DARWICH Mohammad Oday cv title)
+\usepackage{marvosym} % add the symbols for email and phone contact data
+\usepackage{fancyhdr} % Required for the footer
+\usepackage{tabularx} % Nicer table style than the default
+\usepackage{multicol}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{printlen}
+\usepackage{lipsum}
+\usepackage{parskip}
+\usepackage{floatrow}
+\usepackage{eso-pic}
+% Table float box with bottom caption, box width adjusted to content
+%\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+\newcommand{\poubelle}[1]{}
+
+
+\usepackage[none]{hyphenat} % Prevents hyphenation(concat\'enation des mot ) in text 
+
+% % % To define Colors 
+\usepackage[usenames,dvipsnames]{xcolor} % Allows the definition of hex colors
+\definecolor{headings}{HTML}{480607} % Dark red color for headings
+%\definecolor{underheadings}{HTML}{480607}
+\definecolor{text1}{HTML}{480607} % Main document font color, off-black
+\definecolor{underheadings}{rgb}{0.28, 0.02, 0.03}
+\definecolor{cadmiumred}{rgb}{0.89, 0.0, 0.13}
+\definecolor{darkcandyapplered}{rgb}{0.64, 0.0, 0.0}
+\definecolor{black}{rgb}{0.0, 0.0, 0.0}
+\definecolor{mail}{HTML}{431AD9}
+\definecolor{bostonuniversityred}{rgb}{0.8, 0.0, 0.0}
+ \definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
+ \definecolor{bistre}{rgb}{0.24, 0.17, 0.12}
+ \definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+% % to use   \xmark \checkmark   \cmark % % % % % %
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usepackage[font=small,labelfont=bf,tableposition=top]{caption}
+%\DeclareCaptionLabelFormat{andtable}{#1~#2  \&  \tablename~\thetable}
+
+%\usepackage[paper=a4paper,truedimen,margin=20mm,marginparsep=0mm,bottom=0mm]{geometry} 
+
+%\linespread{1.0} % Line spacing
+
+
+
+%\pagestyle{fancy}
+
+% Prevents overfull hbox and vbox
+\hbadness=10000
+\hfuzz=50pt
+\vbadness=10000
+\vfuzz=50pt
+
+
+% % add the symbols for email and phone contact data
+% \fancyhf{}
+% %\fancyfoot[c]{\centering\scshape{\renewcommand{\\}{\ {\large\textperiodcentered}\ }69 Rue Albert DHalenne \\\^Ile de France/Saint Ouen\\Paris\\93400}\\{\Large\Letter} {\href{mailto:mohammadoday@gmail.com}{mohammadoday@gmail.com}
+% %} \ {\Large\Telefon} {+33 (0)60 05 87 08 82}}
+% 
+% \renewcommand\headrulewidth{4pt} % Size of the header rule
+% \renewcommand\footrulewidth{4pt} % Size of the footer rule
+
+
+\usepackage[pdfborder={},bookmarks=true,pdftitle={},pdfauthor={},pdfsubject={},pdfcreator={},pdfproducer={}]{hyperref}
+
+% % % % Enumerate pack % % % % % % 
+
+%\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{-65pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt} %distance entre le haut de la page et le premier ligne ou le titre
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+
+%\parsep=0.2in
+%\parskip=0.1in
+%\partopsep=0mm
+
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{blindtext}
+\usepackage{pst-node,graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+
+\usepackage{fontawesome}
+%\authorimg{ana.eps}] 
+\usepackage{xstring}
+\newcommand{\thelink}{\@empty}
+\newcommand{\link}[2]{%
+  \IfSubStr{#1}{:}{\renewcommand\thelink{#1}}{\renewcommand\thelink{#1:#2}}%
+  \href{\thelink}{\texttt{#2}}%
+}
