@@ -1,0 +1,31 @@
+//The naturals ADT.
+
+import "boolean.adt"
+
+Adt nat
+	Sorts nat;
+	Generators
+		zero : nat;
+		suc : nat -> nat;
+	Operations
+		dec : nat -> nat;
+		plus : nat, nat -> nat;
+		minus : nat, nat -> nat;
+		even : nat -> bool;
+	Axioms
+		//dec
+		dec(zero) = zero;
+		dec(suc($x)) = $x;
+		//plus
+		plus(zero, $x) = $x;
+		plus(suc($x), $y) = suc (plus ($x,$y));
+		//minus
+		minus($x, zero) = $x;
+		minus(suc($x), suc($y)) = minus($x, $y);
+		//even
+		even(zero) = true;
+		even(suc($x)) = not(even($x));		
+	Variables
+		x : nat;
+		y : nat;
+

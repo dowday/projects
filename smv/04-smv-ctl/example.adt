@@ -1,0 +1,41 @@
+import "TR.adt"
+import "atomicProp.adt"
+import "states.adt"
+
+//This ADT contains the example for CTL described in the SMV course. If you want to implement another example, please be sure that
+//the apnmm_diagram only imports ONE example, otherwise the behavior will be unexpected.
+//You are strongly advised to create many theorems to test your implementation, or even other examples than this one.
+Adt example
+Generators
+  //inductive definition of the states
+  s0 : state;
+  s : state -> state;
+  //enumeration of the atomic properties
+  x : prop;
+  y : prop;
+  z : prop;
+Operations
+  exampleTR : TR;
+Axioms
+  mu(x) = cons(s0, cons(s(s0), cons(s^3(s0), cons(s^5(s0), emptySet))));
+  mu(y) = cons(s0, cons(s(s0), cons(s^2(s0), cons(s^4(s0), emptySet))));
+  mu(z) = cons(s0, cons(s^2(s0), cons(s^5(s0), cons(s^6(s0), emptySet))));
+  
+  exampleTR = tr(pair(s0, s^2(s0)),
+  			 tr(pair(s0, s^4(s0)),
+  			  tr(pair(s(s0), s^5(s0)),
+  			   tr(pair(s^2(s0), s^4(s0)),
+  			    tr(pair(s^2(s0), s(s0)),
+  			     tr(pair(s^3(s0), s0),
+  			      tr(pair(s^3(s0), s(s0)),
+  			       tr(pair(s^3(s0), s^7(s0)),
+  			        tr(pair(s^4(s0), s(s0)),
+  			         tr(pair(s^5(s0), s(s0)),
+  			          tr(pair(s^6(s0), s^3(s0)),
+  			           tr(pair(s^6(s0), s^4(s0)),
+  			            tr(pair(s^7(s0), s^5(s0)),
+  			             tr(pair(s^7(s0), s^6(s0)), emptyTR))))))))))))));
+Theorems
+  //The states that validate AF(AG(x)) are: s0, s1, s2, s4 and s5
+  areequals(getStates(AF(AG(atomic(x))), exampleTR),cons(s0, cons(s(s0), cons(s^2(s0), cons(s^4(s0), cons(s^5(s0), emptySet)))))) = true;
+  //TODO: Add more theorems to test your implementation!

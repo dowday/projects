@@ -1,0 +1,7 @@
+//Simple booleans enumeration
+Adt boolean
+	Sorts bool;
+	Generators
+		true : bool;
+		false : bool;
+

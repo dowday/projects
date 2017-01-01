@@ -1,0 +1,33 @@
+__author__ = 'zeroday'
+# TP1, Exercice 2 - List comprehensions
+# The script below contain two different task where we implement it
+# directly in the interpreter 
+
+
+# (a) convert a sequence to a list of words/ Compute the mean length
+# of the words in text1
+> if text1 = ["word1", "word2", "word3"] 
+> sum([len(w) for w in text1])
+
+$ 15 => The instruction give us 16, the totale length of words.
+
+# Mean = total length of words / number of words 
+
+sum([len(w) for w in text1])/len(text1)
+
+
+
+
+# (b) display all words that start with sh, and all words that contain
+# less than 4 characters
+
+>>> list1 = ['she', 'sells', 'sea', 'shells', 'by', 'the', 'sea', 'shore']
+
+>>> [w for w in list1 if w[0:2]== 'sh' ]
+['she', 'shells', 'shore']
+
+	
+>>> [w for w in list1 if len(w) > 4]
+['sells', 'shells', 'shore']
+
+

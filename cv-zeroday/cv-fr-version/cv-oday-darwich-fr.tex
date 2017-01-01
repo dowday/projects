@@ -1,0 +1,279 @@
+%edited version of eversion (because last one is over loaded)
+%\documentclass[a4paper, 11pt]{article}
+\documentclass[a4paper,12pt]{article}
+\include{packages}
+
+%% Sections formatting
+\usepackage{titlesec}				%custom \section
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section} 
+	{\color{burgundy}
+		\scshape\Large\raggedright}{}{0em}{}[\color{black}\titlerule]
+
+\titlespacing{\section}{0pt}{0pt}{5pt} 
+
+%% Background image
+\usepackage{wallpaper}
+
+%% Latex Icon 
+\usepackage{fontawesome}
+
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{textcomp}
+\SpecialCoor
+\newcommand*{\authorimg}[1]{%
+  \raisebox{-0.1\baselineskip}{%
+    \includegraphics[
+      height=0.8\baselineskip,
+      width=\baselineskip,
+      keepaspectratio,
+    ]{#1}%
+  }%
+}
+\newcommand*{\authorimgpg}[1]{%
+  \raisebox{1\baselineskip}{%
+    \includegraphics[
+      height=100\baselineskip,
+      width=\baselineskip,
+      keepaspectratio,
+    ]{#1}%
+  }%
+}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{placeins}
+\usepackage{array, caption, floatrow, tabularx, makecell, booktabs}%
+\captionsetup{labelfont = sc}
+\setcellgapes{3pt}
+%\usepackage{adjustbox}
+\usepackage{arydshln}
+%\usepackage{showframe}
+%\definecolor{rowcolora}{rgb}{0.95, 0.95, 0.96}%Anti-flash white
+%\definecolor{rowcolora}{rgb}{1.0, 0.98, 0.94}% 0.96Floral white
+%\definecolor{rowcolora}{rgb}{1.0, 1.0, 0.94}
+%\definecolor{rowcolora}{rgb}{0.96, 0.96, 0.96}
+\definecolor{rowcolora}{rgb}{0.83, 0.83, 0.83}
+%almond {0.98, 0.92, 0.84}{0.98, 0.92, 0.84}
+
+
+%% Frame box around text 
+
+\newcommand{\myboxedtext}[2][rectangle,draw,fill=white,rounded corners]{%
+            \tikz[baseline=-1ex] \node [#1,rounded corners]{#2};}%
+            
+%% to put en cours word over a word 
+\usepackage{stackengine}
+
+\usepackage{makecell}
+\begin{document}
+\pagenumbering{gobble}
+%% Background image setting
+%\ThisCenterWallPaper{2}{./aa.jpg} % LRCorner-command places the image in the lower-right corner of the site
+%\ULCornerWallPaper and so on for the other corners and \CenterWallPaper and \TileWallPaper for centering or tiling the image
+%This at the start of the command places the image only on the current page
+%\ULCornerWallPaper{2}{./aad.jpg}
+
+
+%% Begin personal information
+% \setlength\intextsep{-9pt}
+% \begin{wrapfigure}[]{r}[3pt]{3cm}
+% \vspace{-3pt}
+% \includegraphics[clip, trim=2cm 5.5cm 3cm 0.7cm,scale=.19]{./me.jpg}
+% \end{wrapfigure}
+
+{\color{black}{\textsc{\large{\so{\textbf{DARWICH  Mohammad Oday}}}}
+\hspace{10mm}Lebanese, 
+25 years old, 
+Permit B
+%\authorimg{../icon/./drivericona.png} International
+
+
+{\color{black}{\Large\authorimg{../icon/telephoneauricularicon.eps}}} \link{tel:+41767539203}{+41 76 753 9203} \quad
+\hspace{8mm}{\color{bostonuniversityred}{{\authorimg{../icon/envelope.eps}}}} \hspace{1mm}{\color{mail}{\href{mailto:darwichoday@gmail.com}{darwichoday@gmail.com}}} \quad
+\hspace{4mm}{\color{bostonuniversityred}{\authorimg{../icon/locationplaceholder.eps} }} Cologny/Geneva} \\ 
+
+\authorimg{../icon/target2.eps} {\color{burgundy}{\underline{\textbf{Objective}}: 
+I am looking for a Master's Thesis in order to graduate at end of July 2017}}}
+\hrule height 1.4pt
+%% End personal information
+\FloatBarrier
+%% Experience
+%\setlength{\arrayrulewidth}{0.003mm} %the thickness of the border 
+%\setlength{\tabcolsep}{0.2mm} %space between the text and the left right of it's border
+\renewcommand{\arraystretch}{1.79} %heigh of each row
+\vspace{-5mm}
+\begin{minipage}[t]{0.45\textwidth}
+\begin{table}[H]
+\fontsize{10}{12}{\selectfont
+\begin{tabular}[t]{ m{100mm}}
+\multicolumn{1}{c}{\color{burgundy}\scshape\LARGE\raggedright 
+\textbf{Professional Experience}}\\
+\hline \hline
+\rowcolor{rowcolora}
+\textbf{Innovation Park, EPFL}, Lausanne \hfill \bf{Feb.$\triangleright$ Jun. 2016} \\
+\authorimg{../icon/favoritesbutton.eps} \textbf{Selected at the top of the 
+25/800 participants for the CTI Entrepreneurship Training - Business Concept}\\
+\hline 
+\rowcolor{rowcolora}
+\textbf{Abissa \& World Economic Forum} \hfill \bf{Mar. $\triangleright$ Jun. 2016} \\ 
+\rowcolor{rowcolora}\bf{IT Technician}\\
+- \quad Backup, Data migration, Unblock devices (iOS devices)\\
+\hline
+\rowcolor{rowcolora}\textbf{VINCI-Energies}, France \hfill \bf{Mar. $\triangleright$ Aug. 2013} \\
+\rowcolor{rowcolora}\bf{Technical manager}, Intership\\ 
+
+%&\cmark Missions confi\'ees : 
+-\quad Project definition of an \textit{Enterprise content management} system (to replace Lotus) and technical design specifications\\
+-\quad Online deployment and DataBase migration\\
+\hline
+
+\rowcolor{rowcolora}\textbf{Oger International}, Saoudi Arabia \hfill \bf{Jun. $\triangleright$ Jul. 2012} \\
+\rowcolor{rowcolora}\bf{Assistant Engineer, Intership}\\ 
+
+- \quad Sensor Installation for an alarm system, VHDL developpement, test \&  validation\\
+\hline
+\rowcolor{rowcolora}\textbf{HaririMed}, Lebanon \hfill \bf{Jun.  $\triangleright$ Aug. 2011} \\
+\rowcolor{rowcolora}\bf{Backend Web Developer}, Intership\\ 
+- \quad  Developpement of 3 UserControl for a web application system for Hospital center in Kuwait 
+and Turkey in ASP.net, VB.net, Javascript and SQL Data Cleaning for the patients database\\
+\end{tabular}
+}
+\hfill
+
+\end{table}
+\end{minipage}
+\hspace{16mm}
+\begin{minipage}[t]{0.49\textwidth}
+%\vspace{0.6mm}
+%\setlength{\arrayrulewidth}{0.004mm} %the thickness of the border 
+%\setlength{\tabcolsep}{0.7mm} %space between the text and the left right of it's border
+\renewcommand{\arraystretch}{1.7} %heigh of each row
+%% Herethetable
+
+\begin{table}[H]
+%\small \vspace{-3.5mm}
+\resizebox{.85\columnwidth}{!}{
+\begin{tabular}[t]{ m{79mm}}
+%% Achivements
+\multicolumn{1}{c}{\color{burgundy}\scshape\LARGE\raggedright \textbf{Achievements}}\\
+\hline \hline
+\rowcolor{rowcolora}\textbf{Co-founder of Brix3D} \hfill \bf{\authorimg{../icon/calendar.eps} Mars 2016} \\
+\authorimg{../icon/medal.eps} Winner of the 
+\href{http://www.venturekick.ch/}{VentureKick.ch}\authorimg{../icon/venturekick.jpeg} Competition 
+(An initiative to finance startup projects)\\ \\
+
+%% Activities
+\multicolumn{1}{c}{\color{burgundy}\scshape\LARGE\raggedright \textbf{Activities}}\\
+\hline \hline
+\rowcolor{rowcolora}\textbf{The Port Hackathon at Cern}, Geneva 
+ {\color{rowcolora}ffffffffffff} \hfill \textbf{|2016}\\
+
+- Create the idea of \href{https://twitter.com/uRegSwitzerland}{ \faTwitter Personal Health Wallet}
+
+- Pitched at the open ceremony of \href{http://ghf2016.g2hp.net/}{Geneva Health Forum}
+
+- Adopted by Hôpitaux Universitaires de Genève\\
+\rowcolor{rowcolora}\textbf{Concours Open Geneva / Geneva Creativity Center}, Geneva \hfill\textbf{|2015}\\
+- Create \& develop with QJIS and  Java a 
+website to show the noisy area in Geneva\\
+
+\rowcolor{rowcolora}\textbf{Mentorat Program} University of Geneva {\color{rowcolora}dd}\hfill  \textbf{|2015}\\
+-\quad Sharing the professional experience  during 3 months with M. Sinana Al-Adhami, ALUMNI of University of Geneva
+ \& Engineer at \href{https://www.nagra.com/}{\textbf{Kudelski Group}}\\
+\end{tabular}
+}
+\end{table}
+\end{minipage}
+\vspace{-9mm}
+\FloatBarrier
+%% Experience
+%\setlength{\arrayrulewidth}{0.3mm} %the thickness of the border 
+%\setlength{\tabcolsep}{0.7mm} %space between the text and the left right of it's border
+\renewcommand{\arraystretch}{1.7} %heigh of each row
+\begin{minipage}[t]{0.45\textwidth}
+\vspace{-2mm}
+\begin{table}[H]
+\fontsize{10}{13}{\selectfont
+\begin{tabular}[t]{ m{100mm}}
+%% Education
+\multicolumn{1}{c}{\color{burgundy}\scshape\LARGE\raggedright \textbf{Education} }\\ 
+\hline \hline
+\rowcolor{rowcolora}
+\textbf{Master Computer Science}\\
+\authorimg{../icon/locationplaceholder.eps} University of Geneva, Geneva  
+\hfill \authorimg{../icon/calendar.eps} \stackanchor{\small 2015}{{\fontsize{8}{20}\selectfont on going}}
+
+{\color{bostonuniversityred} \bf{{\fontsize{8}{20}\selectfont (Expected graduation at the 
+end of July or end of September 2017)}}}\\
+
+\rowcolor{rowcolora}
+\textbf{Master Electronic \& Instrumentation} {\fontsize{8}{60} \selectfont(2 semester)}\\
+\authorimg{../icon/locationplaceholder.eps} \boldmath{University of the Littoral Opal Coast, France}  \hfill \authorimg{../icon/calendar.eps} 2014\\ 
+
+\rowcolor{rowcolora}
+\textbf{Master Image Signal Processing} {\fontsize{8}{60}\selectfont(2 semester)}\\
+\authorimg{../icon/locationplaceholder.eps} \boldmath{University of the Littoral Opal Coast, France} \hfill \authorimg{../icon/calendar.eps} 2013\\
+
+\rowcolor{rowcolora}\textbf{Bachelor Computer \& Communication Networks Engineering}\\
+\authorimg{../icon/locationplaceholder.eps} \boldmath{Lebanese University, Lebanon} \hfill \authorimg{../icon/calendar.eps} 2012\\
+\end{tabular}
+}
+\end{table}
+\end{minipage}
+\hspace{16mm}
+\begin{minipage}[t]{0.49\textwidth}
+%\vspace{1.5mm}
+%\setlength{\arrayrulewidth}{0.2mm} %the thickness of the border 
+%\setlength{\tabcolsep}{0.7mm} %space between the text and the left right of it's border
+\renewcommand{\arraystretch}{1.5} %heigh of each row
+% \vspace{-40mm}
+
+\fontsize{7}{3}{\selectfont
+\begin{table}[H]
+
+\small
+\resizebox{.85\columnwidth}{!}{
+\begin{tabular}[t]{ m{78mm}}
+%% Skills
+\multicolumn{1}{c}{\color{burgundy}\scshape\LARGE\raggedright \textbf{Skills}} \\ \hline
+{\fontsize{8}{10}\selectfont
+\myboxedtext{Python}
+\myboxedtext{Matlab}
+\myboxedtext{Java}
+\myboxedtext{SQL}
+\myboxedtext{C++}
+\myboxedtext{PHP}
+\myboxedtext{CSS}
+\myboxedtext{HTML}
+\myboxedtext{Javascript} 
+\myboxedtext{C\#}
+\myboxedtext{UML}
+\myboxedtext{Angular Js}}
+\myboxedtext{Linux}
+\myboxedtext{Windows \& MS office tools}
+\myboxedtext{Haskell, noSQL}\\
+%% Languages
+\multicolumn{1}{c}{\color{burgundy}\scshape\LARGE\raggedright \textbf{Languages}} \\ \hline
+\quad French / Arab \hfill Bilingual \authorimg{../icon/starfullfilled.eps} \authorimg{../icon/starfullfilled.eps} \authorimg{../icon/starfullfilled.eps} \authorimg{../icon/starfullfilled.eps} \authorimg{../icon/starfullfilled.eps}  \\
+\quad English  \hfill Fluent \authorimg{../icon/starfullfilled.eps} \authorimg{../icon/starfullfilled.eps} \authorimg{../icon/starfullfilled.eps} \authorimg{../icon/starfullfilled.eps} \authorimg{../icon/starempty.eps} \\
+\quad German \hfill Learning  \authorimg{../icon/halfilledratingstar.eps} \authorimg{../icon/starempty.eps} \authorimg{../icon/starempty.eps} \authorimg{../icon/starempty.eps} \authorimg{../icon/starempty.eps} \\
+%% Interests 
+\multicolumn{1}{c}{\color{burgundy}\scshape\LARGE\raggedright \textbf{Interests}}\\ \hline
+Machine learning, Information Security, Big data, IoT, Geopolitics, Cycling, 
+hackathon challenges
+\end{tabular}
+}
+\end{table}
+}
+\end{minipage}
+
+{\fontsize{10}{10}\selectfont References : Prof. \href{http://sip.unige.ch/team/prof-sviatoslav-voloshynovskiy/}{Sviatoslav voloshynovskiy},
+[\href{mailto:svolos@unige.ch}{\nolinkurl{svolos@unige.ch}}],
+Prof. \href{https://itp.nyu.edu/itp/people/people.php?id=3273&group=All}{GREY François} 
+[\href{mailto:francois.grey@cern.ch }{\nolinkurl{francois.grey@cern.ch}}]}
+\end{document}
+

@@ -1,0 +1,1 @@
+this is greedy, NN applied to TSP

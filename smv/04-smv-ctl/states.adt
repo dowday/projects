@@ -1,0 +1,4 @@
+//Trivial definition of a sort "states". The actual states shall be described
+//elsewhere (see example.adt)
+Adt states
+Sorts state;

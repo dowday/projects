@@ -1,0 +1,22 @@
+Dans cet expérience, on prend une population de 12, qu'on
+fait évoluer 50 fois avec selection, crossover et mutation.
+
+\begin{table}[H]
+
+\centering
+\caption{Results with same params $ P_m = 0.01 $, $ p_c =0.6 $ on 5 execution}
+\label{}
+\vspace{+5mm}
+\begin{adjustbox}{width=\linewidth}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+       & \multicolumn{5}{c|}{popSize = 12}                                                                                                                                                                                                                                                                                                                                                                                                                      \\ \hline
+Exec   & 1                                                                                     & 2                                                                                     & 3                                                                                      & 4                                                                                    & 5                                                                                      \\ \hline
+Best F & 1.0                                                                                   & 3.0                                                                                   & 3.0                                                                                    & 3.0                                                                                  & 1                                                                                      \\ \hline
+Mean   & 1.06                                                                                  & 3.02                                                                                  & 3.56                                                                                   & 3.04                                                                                 & 1.69                                                                                   \\ \hline
+STD    & 0.3428932159955306                                                                    & 0.2                                                                                   & 0.282842712474619                                                                      & 0.282842712474619                                                                                 & 0.3938927711338647                                                                                   \\ \hline
+       & \begin{tabular}[c]{@{}c@{}}{[}'X4', 'X3', 'X2', \\ 'OR', 'NOT', 'AND'{]}\end{tabular} & \begin{tabular}[c]{@{}c@{}}{[}'OR', 'NOT', 'X3',\\  'OR', 'X3', 'XOR'{]}\end{tabular} & \begin{tabular}[c]{@{}c@{}}{[}'X2', 'XOR', 'AND',\\  'OR', 'XOR', 'X4'{]}\end{tabular} & \begin{tabular}[c]{@{}c@{}}{[}'OR', 'X4', 'XOR',\\ 'X4', 'OR', 'XOR'{]}\end{tabular} & \begin{tabular}[c]{@{}c@{}}{[}'NOT', 'X3', 'X2',\\  'NOT', 'X4', 'AND'{]}\end{tabular} \\ \hline
+\end{tabular}
+
+\end{adjustbox}
+\end{table}

@@ -1,0 +1,16 @@
+import "states.adt"
+
+//A simple pair of states, useful for the transition relation
+Adt pairOfStates 
+Sorts pair;
+Generators
+	pair : state, state -> pair;
+Operations
+	from : pair -> state;
+	to : pair -> state;
+Axioms
+	from(pair($f, $s)) = $f;
+	to(pair($f, $s)) = $s;
+Variables
+	f : state;
+	s : state;	
